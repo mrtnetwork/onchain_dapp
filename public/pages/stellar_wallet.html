@@ -1,0 +1,33 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/12.2.0/stellar-sdk.js"></script>
+    <script src="bundle.js"></script>
+    <script src="../scripts/stellar_wallet.mjs"></script>
+</head>
+
+<body>
+    
+    <h1>Wallet Request</h1>
+    <button onclick="requestAccounts()">Request accounts</button><br><br>
+    <button onclick="sendChangeTrust()">Send Change Trust Transaction</button><br><br>
+    <button onclick="signChangeTrust()">Sign Change Trust Transaction</button><br><br>
+    <button onclick="signMessage()">Sign message</button><br><br>
+    <button onclick="uploadWasmContractBytes()">Send Upload Soroban Token Contract WASM Bytes</button><br><br>
+    <button onclick="deployContract()">Send Deploy Soroban Contract</button><br><br>
+    <button onclick="initializeSorobanTokenContract()">Send Intialize Soroban Token Contract</button><br><br>
+    <button onclick="mintSorobanTokenContract()">Send Mint Soroban Token Contract</button><br><br>
+    <button onclick="transferSorobanTokenContract()">Send Transfer Soroban Token Contract</button><br><br>
+    <button onclick="simplePayment()">Send Simple payment</button><br><br>
+    <button onclick="simpleAssetPayment()">Send Simple asset payment</button><br><br>
+    <button onclick="listenOnEvents()">Listen on events</button><br><br>
+
+</body>
+
+
+</html>

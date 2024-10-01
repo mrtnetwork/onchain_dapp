@@ -1,0 +1,35 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton</title>
+    <script src="bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ton/core@0.57.0/dist/index.min.js"></script>
+    <script src="../scripts/ton_wallet.mjs" type="module"></script>
+
+
+</head>
+
+<body>
+    <h1>Wallet Request</h1>
+    <button onclick="requestAccounts()">Connect to wallet</button><br><br>
+    <button onclick="sendTransaction()">Send simple ton transfer</button><br><br>
+    <button onclick="sendTransactionWithUnknownPayload()">Send transaction with unknown payload</button><br><br>
+    <button onclick="transferJetton()">Transfer jetton</button><br><br>
+    <button onclick="multipleTransferJetton()">Multiple Transfer jetton</button><br><br>
+    <button onclick="deployJettonMinter()">Deploy Jetton Minter</button><br><br>
+    <button onclick="mintJetton()">Mint Jetton</button><br><br>
+    <button onclick="changeJettonOwner()">Change Jetton Owner</button><br><br>
+    <button onclick="deployNFTContract()">Deploy NFT Collection</button><br><br>
+    <button onclick="batchMintNFT()">Batch mint nft</button><br><br>
+    <button onclick="transferNFT()">Transfer NFT</button><br><br>
+    <button onclick="version5Body()">V5 Internal message</button><br><br>
+    <button onclick="listenOnEvents()">Listen on events</button><br><br>
+    <button onclick="signMessage()">Sign message</button><br><br>
+
+</body>
+
+</html>

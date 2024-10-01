@@ -1,0 +1,30 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana</title>
+    <script src="bundle.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+    <script src="../scripts/solana_standard.mjs"></script>
+</head>
+
+<body>
+    <h1>Solana standard provider injection</h1>
+    <button onclick="singleSignRequest()">Sign transaction</button><br><br>
+    <button onclick="multipleSignRequest()">Sign multiple transaction</button><br><br>
+    <button onclick="sendTransaction()">Send transaction</button><br><br>
+    <button onclick="multipleTransaction()">Send multiple transactions</button><br><br>
+    <button onclick="singleSignLegacyRequest()">Signe legacy transaction</button><br><br>
+    <button onclick="multipleSignLegacyRequest()">Multiple sign legacy transactions</button><br><br>
+    <button onclick="sendLegacyTransaction()">Send legacy Transaction</button><br><br>
+    <button onclick="multipleLegacyTransaction()">Multiple send legacy transactions</button><br><br>
+    <button onclick="multipleTransactionWithSignerOption()">Send transaction with signer opetion (should be failed)</button><br><br>
+    <button onclick="signMessage()">Sign message</button><br><br>
+    <button onclick="signMessageWithTransactionBytes()">Sign message With Transaction Bytes (should be failed)</button><br><br>
+    <button onclick="listenOnEvents()">Listen on event</button><br><br>
+</body>
+
+</html>
