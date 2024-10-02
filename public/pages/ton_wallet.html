@@ -7,14 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ton</title>
     <script src="bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@ton/core@0.57.0/dist/index.min.js"></script>
+    <!-- <script type="module">
+        import toncore from 'https://cdn.jsdelivr.net/npm/@ton/core@0.58.1/+esm'
+        </script> -->
+        
     <script src="../scripts/ton_wallet.mjs" type="module"></script>
+    
 
 
 </head>
 
 <body>
-    <h1>Wallet Request</h1>
+    <h1 id="request_error">Wallet Request</h1>
     <button onclick="requestAccounts()">Connect to wallet</button><br><br>
     <button onclick="sendTransaction()">Send simple ton transfer</button><br><br>
     <button onclick="sendTransactionWithUnknownPayload()">Send transaction with unknown payload</button><br><br>

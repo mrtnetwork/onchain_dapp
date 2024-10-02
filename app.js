@@ -5,6 +5,9 @@ const app = express();
 const port = 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('/scripts/stellar_sdk_js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'pages/eth_eip.html'));
+});
 app.get('/eth_standard', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'pages/eth_eip.html'));
 });

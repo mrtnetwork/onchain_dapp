@@ -1,6 +1,8 @@
 
 function parseResult(walletResponse) {
     if (typeof walletResponse.error != "undefined") {
+        // window.document.getElementById("request_error").innerText = " Error: " + JSON.stringify(walletResponse.error);
+
         console.error("id: " + walletResponse.id + " Error: " + JSON.stringify(walletResponse.error))
         throw walletResponse.error;
     }
@@ -27,7 +29,7 @@ async function getTronWeb() {
 async function transferTrx() {
     let tron = await getTronWeb();
     const account = tron.defaultAddress?.base58;
-    console.log("transfer: " +account)
+    console.log("transfer: " + account)
     const transaction = await tron.transactionBuilder.sendTrx("TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeL", 1, account);
     const result = await window.tron.sendWalletRequest({ method: "tron_signTransaction", params: [transaction] });
     parseResult(result)

@@ -6,14 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/12.2.0/stellar-sdk.js"></script>
     <script src="bundle.js"></script>
-    <script src="../scripts/stellar_wallet.mjs"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/12.2.0/stellar-sdk.js"></script>
+    <script src="../scripts/stellar_wallet.mjs" type="module"></script>
 </head>
 
 <body>
     
     <h1>Wallet Request</h1>
+    <small id="request_error"></small>
     <button onclick="requestAccounts()">Request accounts</button><br><br>
     <button onclick="sendChangeTrust()">Send Change Trust Transaction</button><br><br>
     <button onclick="signChangeTrust()">Sign Change Trust Transaction</button><br><br>

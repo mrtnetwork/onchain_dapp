@@ -1,5 +1,7 @@
 function parseResult(walletResponse) {
     if (typeof walletResponse.error != "undefined") {
+        // window.document.getElementById("request_error").innerText = " Error: " + JSON.stringify(walletResponse.error);
+
         console.error("id: " + walletResponse.id + " Error: " + JSON.stringify(walletResponse.error))
         throw walletResponse.error;
     }
@@ -88,27 +90,27 @@ async function deployContract() {
     parseResult(sendTransaction)
 }
 
-async function initializeSorobanTokenContract() {
-    const server = createServer();
-    const source = await stellarRequestAccount();
-    const account = await server.getAccount(source);
-    const transaction = new StellarSdk.StellarBase.TransactionBuilder(account, { fee: StellarSdk.StellarBase.BASE_FEE, networkPassphrase: StellarSdk.StellarBase.Networks.TESTNET })
-        .addOperation(StellarSdk.StellarBase.Operation.invokeContractFunction({
-            contract: "CCUSYHUXMJUWWUAVPQKDI4IWYE6TGZLQHX4YUYAPXESYWKIIFJ3YXVVR",
-            function: "initialize",
-            args: [
-                new StellarSdk.StellarBase.xdr.ScVal.scvAddress(new StellarSdk.StellarBase.Address(source).toScAddress()),
-                new StellarSdk.StellarBase.xdr.ScVal.scvU32(18),
-                new StellarSdk.StellarBase.xdr.ScVal.scvString("MRTNETWORK"),
-                new StellarSdk.StellarBase.xdr.ScVal.scvString("MRT")
-            ],
-        }))
-        .setTimeout(200)
-        .build();
-    const tx = await server.prepareTransaction(transaction);
-    const sendTransaction = await window.stellar.sendWalletRequest({ method: "stellar_sendTransaction", params: [tx.toXDR()] });
-    parseResult(sendTransaction)
-}
+// async function initializeSorobanTokenContract() {
+//     const server = createServer();
+//     const source = await stellarRequestAccount();
+//     const account = await server.getAccount(source);
+//     const transaction = new StellarSdk.StellarBase.TransactionBuilder(account, { fee: StellarSdk.StellarBase.BASE_FEE, networkPassphrase: StellarSdk.StellarBase.Networks.TESTNET })
+//         .addOperation(StellarSdk.StellarBase.Operation.invokeContractFunction({
+//             contract: "CCUSYHUXMJUWWUAVPQKDI4IWYE6TGZLQHX4YUYAPXESYWKIIFJ3YXVVR",
+//             function: "initialize",
+//             args: [
+//                 new StellarSdk.StellarBase.xdr.ScVal.scvAddress(new StellarSdk.StellarBase.Address(source).toScAddress()),
+//                 new StellarSdk.StellarBase.xdr.ScVal.scvU32(18),
+//                 new StellarSdk.StellarBase.xdr.ScVal.scvString("MRTNETWORK"),
+//                 new StellarSdk.StellarBase.xdr.ScVal.scvString("MRT")
+//             ],
+//         }))
+//         .setTimeout(200)
+//         .build();
+//     const tx = await server.prepareTransaction(transaction);
+//     const sendTransaction = await window.stellar.sendWalletRequest({ method: "stellar_sendTransaction", params: [tx.toXDR()] });
+//     parseResult(sendTransaction)
+// }
 async function initializeSorobanTokenContract() {
     const server = createServer();
     const source = await stellarRequestAccount();
@@ -191,7 +193,7 @@ async function simpleAssetPayment() {
     const account = await server.getAccount(source);
     const transaction = new StellarSdk.StellarBase.TransactionBuilder(account, { fee: StellarSdk.StellarBase.BASE_FEE, networkPassphrase: StellarSdk.StellarBase.Networks.TESTNET })
         .addOperation(StellarSdk.StellarBase.Operation.payment({
-            asset: new StellarSdk.StellarBase.Asset("MRT","GB726ND2YG4TR772WY4767M56RNSN3PHP4MV2ITQVCDM2LSMMVT7CD6O"),
+            asset: new StellarSdk.StellarBase.Asset("MRT", "GB726ND2YG4TR772WY4767M56RNSN3PHP4MV2ITQVCDM2LSMMVT7CD6O"),
             destination: "MD35VPYBDPDRVBEIUV36AZCN5G3KMX3WWVURAIXWIKZWH5QD54HXQAAAAAAAAAAHX6RTC",
             amount: "12"
         }))
@@ -203,7 +205,7 @@ async function simpleAssetPayment() {
 function listenOnEvents() {
 
     ton.on("accountsChanged", function (s) {
-        console.log("Account changed in page: " +  JSON.stringify(s));
+        console.log("Account changed in page: " + JSON.stringify(s));
         console.log("default address: " + stellar.selectedAddress);
     });
     ton.on("chainChanged", function (s) {
