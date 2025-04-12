@@ -1,0 +1,24 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptos wallet standard</title>
+    <script src="bundle.js"></script>
+    <script src="../scripts/ws_aptos.mjs" type="module"></script>
+</head>
+
+<body>
+    <button onclick="connect()">Connect</button><br><br>
+    <button onclick="transferExample()">Transfer</button><br><br>
+    <button onclick="signMessageExample()">Sign Message</button><br><br>
+    <button onclick="getNetwork()">Get Network</button><br><br>
+    <button onclick="changeNetwork()">Change Network</button><br><br>
+    <button onclick="onAccountChange()">Listen change account</button><br><br>
+    <button onclick="onNetworkChange()">Listen change network</button><br><br>
+</body>
+
+
+</html>

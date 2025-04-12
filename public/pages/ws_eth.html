@@ -1,0 +1,27 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Wallet Standard</title>
+    <script src="bundle.js"></script>
+    <script src="../scripts/ws_eth.mjs" type="module"></script>
+</head>
+
+<body>
+    <button onclick="connect()">Connect</button><br><br>
+    <button onclick="addNewChain()">Add new network</button><br><br>
+    <button onclick="signTypedData()">Sign TypedData</button><br><br>
+    <button onclick="signTypedDataV3()">Sign TypedData V3</button><br><br>
+    <button onclick="signTypedDataV4()">Sign TypedData V4</button><br><br>
+    <button onclick="personalSign()">Personal Sign</button><br><br>
+    <button onclick="sendTransaction()">Send Transaction</button><br><br>
+    <button onclick="sendTransactionUsingRequest()">Send Transaction Using Request</button><br><br>
+    <button onclick="listenOnEvents()">Listen on events</button><br><br>
+
+</body>
+
+
+</html>

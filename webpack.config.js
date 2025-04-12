@@ -8,6 +8,14 @@ module.exports = {
         path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js', // Output bundled file
     },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i, // Match CSS files
+                use: ["style-loader", "css-loader"], // Loaders to process CSS
+            },
+        ],
+    },
     resolve: {
         fallback: {
             buffer: require.resolve('buffer/'),
@@ -17,8 +25,11 @@ module.exports = {
             stream: require.resolve('stream-browserify'),
             zlib: require.resolve('browserify-zlib'),
             assert: require.resolve('assert/'),
+            "crypto": false
             // Add other Node.js core modules here as needed
         },
+        extensions: [".js", ".jsx", ".css"], // Ensure Webpack recognizes CSS files
+
     },
     plugins: [
         new webpack.ProvidePlugin({

@@ -1,7 +1,6 @@
 async function runMethod(method, asyncFunc) {
   try {
     const data = await asyncFunc();
-    console.log('Response: ' + method + " " + data);
     return data;
   } catch (error) {
     console.error('Error occurred: ' + method + " " + JSON.stringify(error));
@@ -11,7 +10,8 @@ async function runMethod(method, asyncFunc) {
 
 
 async function _requestAccounts() {
-  let accounts = await tron.request({ method: "tron_requestAccounts" });
+  let accounts = await tronLink.request({ method: "tron_requestAccounts" });
+  console.log("accounts: " + JSON.stringify(accounts))
   return accounts[0];
 }
 
@@ -31,12 +31,31 @@ async function getTronWeb() {
   });
 }
 
+async function switchChain() {
+  const result = await tron.sendWalletRequest({
+    method: "wallet_switchEthereumChain", params: [
+      { chainId: "0x" + (728126428).toString(16) }
+    ]
+  });
+  parseResult(result)
+
+}
+
 async function transferTrx() {
   return runMethod("transaction: ", async function () {
     let tronweb = await getTronWeb();
     const account = tronweb.defaultAddress?.base58;
     const transaction = await tronweb.transactionBuilder.sendTrx("TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeL", 1, account);
-    return await tronweb.trx.sign(transaction)
+    // return await tronweb.trx.sign(transaction)
+    let signedTransaction = await tronweb.trx.sign(transaction)
+    let result = await tronweb.trx.sendRawTransaction(signedTransaction);
+    console.log(result);
+  })
+}
+async function signMessage() {
+  return runMethod("signMessage: ", async function () {
+    let tronweb = await getTronWeb();
+    return await tronweb.trx.signMessageV2("is a test")
   })
 }
 async function createIssue() {
@@ -79,7 +98,10 @@ async function sendTrc10() {
     const to = "THEYs5NZFgi3ZQC7BQhk7mt4DjTVWGzzdJ";
     const account = tronweb.defaultAddress?.base58;
     const transaction = await tronweb.transactionBuilder.sendToken(to, 100, "1001470", account);
-    return await tronweb.trx.sign(transaction)
+    let signedTransaction = await tronweb.trx.sign(transaction)
+    let result = await tronweb.trx.sendRawTransaction(signedTransaction);
+    console.log(result);
+
   })
 }
 async function freezeBalanceV2() {
@@ -565,7 +587,7 @@ async function createContract() {
 }
 async function triggerContract() {
   let tronweb = await getTronWeb();
-  const transaction = { "visible": true, "txID": "1e909c66894965e187d9f0b84983abed2a47e39c03fe24d21ede4dc5da932c2e", "raw_data": { "contract": [{ "parameter": { "value": { "data": "a9059cbb0000000000000000000000004fafb33f0e492fd10e91b55ed88872104ffd94ee00000000000000000000000000000000000000000000000000000002540be400", "owner_address": "TAj27qjHcEQ6VakRXgZ2k5NEqygobQYTAT", "contract_address": "TR5YLWuKTThNWdCiGtKzV1Rz1oSH3pFjbX" }, "type_url": "type.googleapis.com/protocol.TriggerSmartContract" }, "type": "TriggerSmartContract" }], "ref_block_bytes": "59fb", "ref_block_hash": "51898b07af8e3521", "expiration": 1724647965000, "timestamp": 1724647906531 }, "raw_data_hex": "0a0259fb220851898b07af8e352140c8829ee898325aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a1541084937b3f86ea7bbca86f2809809a65ed8a7ada9121541a5bc85e1220d48a885b1565db2c68d007632acce2244a9059cbb0000000000000000000000004fafb33f0e492fd10e91b55ed88872104ffd94ee00000000000000000000000000000000000000000000000000000002540be40070e3b99ae89832" };
+  const transaction = { "raw_data": { "ref_block_bytes": "ca7c", "ref_block_hash": "170531b72a54d7dc", "expiration": "1735502730218", "data": "https://github.com/mrtnetwork", "contract": [{ "type": "TriggerSmartContract", "parameter": { "value": { "owner_address": "TBP6QFobb8HeEKQN94KVKi4aNCqVEwTDwQ", "contract_address": "TFXP3tb7MABUNLL2FqGFNjSwHP6gnQ7vrg", "data": "b3240967", "call_value": "10000000", "call_token_value": "25000000", "token_id": "1001479" }, "type_url": "type.googleapis.com/protocol.TriggerSmartContract" } }], "timestamp": "1735459534497", "fee_limit": "25000000" }, "txID": "449d7ed48222718279c15db28e3f960c24e48e67c62286cf63f4d89bf1767f52", "raw_data_hex": "0a02ca7c2208170531b72a54d7dc40eaa798a0c132521d68747470733a2f2f6769746875622e636f6d2f6d72746e6574776f726b5a7b081f12770a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412420a15410f7c9973b319c827d83a465b46318bcfe8f101291215413cee53f968c1ed1413fd98c3e7feec609be8e4491880ade2042204b324096728c0f0f50b3087903d70a1edcb8bc1329001c0f0f50b", "visible": true };
   return await tronweb.trx.sign(transaction);
 }
 async function failedTriggerContract() {
@@ -577,26 +599,26 @@ async function failedTriggerContract() {
 async function mint() {
   let tronweb = await getTronWeb();
   const transaction =
-    { "ret": [{}], "visible": true, "txID": "092bc309d12df92a95b78c3c2fab16a2613b0f6ec160f1b9225b4075e8cb20a1", "raw_data": { "contract": [{ "parameter": { "value": { "data": "40c10f190000000000000000000000004fafb33f0e492fd10e91b55ed88872104ffd94ee00000000000000000000000000000000000000000000000000000002540be400", "owner_address": "TAj27qjHcEQ6VakRXgZ2k5NEqygobQYTAT", "contract_address": "TR5YLWuKTThNWdCiGtKzV1Rz1oSH3pFjbX" }, "type_url": "type.googleapis.com/protocol.TriggerSmartContract" }, "type": "TriggerSmartContract" }], "ref_block_bytes": "5ce6", "ref_block_hash": "2193fed5d0be4224", "expiration": 1724650230000, "timestamp": 1724650170500 }, "raw_data_hex": "0a025ce622082193fed5d0be422440f0a1a8e998325aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a1541084937b3f86ea7bbca86f2809809a65ed8a7ada9121541a5bc85e1220d48a885b1565db2c68d007632acce224440c10f190000000000000000000000004fafb33f0e492fd10e91b55ed88872104ffd94ee00000000000000000000000000000000000000000000000000000002540be4007084d1a4e99832" };
+    { "raw_data": { "ref_block_bytes": "c8e4", "ref_block_hash": "bfb27f477c4c799f", "expiration": "1735501493852", "data": "https://github.com/mrtnetwork", "contract": [{ "type": "TriggerSmartContract", "parameter": { "value": { "owner_address": "TBP6QFobb8HeEKQN94KVKi4aNCqVEwTDwQ", "contract_address": "TXCdwTkjSKEcysjUFJBKPWCp3S8XVk7hAS", "data": "40c10f190000000000000000000000000f7c9973b319c827d83a465b46318bcfe8f1012900000000000000000000000000000000000000000000032d26d12e980b600000" }, "type_url": "type.googleapis.com/protocol.TriggerSmartContract" } }], "timestamp": "1735458298157", "fee_limit": "25000000" }, "txID": "481f180550d54dbb5a310da838a160e314221bb3e6667ad7528f835bf3e73ca5", "raw_data_hex": "0a02c8e42208bfb27f477c4c799f40dceccc9fc132521d68747470733a2f2f6769746875622e636f6d2f6d72746e6574776f726b5aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a15410f7c9973b319c827d83a465b46318bcfe8f10129121541e8e4ddbb961a750f5b704d50e4d924312602aac1224440c10f190000000000000000000000000f7c9973b319c827d83a465b46318bcfe8f1012900000000000000000000000000000000000000000000032d26d12e980b60000070adb2808bc1329001c0f0f50b", "visible": true }
+    ;
   return await tronweb.trx.sign(transaction);
 }
 function listenOnEvent() {
   tron.on("accountsChanged", function (s) {
-      console.log("accountsChange in page: " + s);
-      console.log("default address: " + tron.tronWeb.defaultAddress?.base58)
+    console.log("accountsChange in page: " + JSON.stringify(s));
 
   });
   tron.on("chainChanged", function (s) {
-      console.log("chain changed in page: " + s);
+    console.log("chain changed in page: " + s);
   });
 
 
   tron.on("connect", function (s) {
-      console.log("connect in page: " + s);
+    console.log("connect in page: " + s);
   });
 
   tron.on("disconnect", function (s) {
-      console.log("disconnect in page: " + s);
+    console.log("disconnect in page: " + s);
   });
 }
 window.transferTrx = transferTrx
@@ -611,3 +633,5 @@ window.accountPermission = accountPermission
 window.delegateResource = delegateResource
 window.tronRequestAccount = tronRequestAccount
 window.listenOnEvent = listenOnEvent
+window.switchChain = switchChain
+window.signMessage = signMessage
