@@ -32,7 +32,7 @@ async function getWallet() {
     window.addEventListener("wallet-standard:register-wallet", function s(e) {
         e.detail({
             register: function _(params) {
-                if (params !== undefined && params.name != undefined && params.name == 'MRT') {
+                if (params !== undefined && params.name != undefined && params.name == 'OnChain') {
                     completer.resolve(params)
                 }
             }
@@ -176,10 +176,25 @@ async function multipleSignInMessage() {
         issuedAt: currentDateTime,
         resources: []
     }
+    const signInData2 = {
+        domain: "localhost:3000",
+        statement: "Sign-in to connect!",
+        uri: "wss://localhost:3000/",
+        version: "1",
+        nonce: "oBbLoEldZs123123",
+        // chainId: "solana:mainnet",
+        expirationTime: expirationTime,
+        address: accounts[0].address,
+        requestId: '1',
+        notBefore: currentDateTime,
+        issuedAt: currentDateTime,
+        resources: []
+    }
+
 
     const signedTransaction = await wallet.features["solana:signIn"].signIn(
         [signInData,
-            signInData,]
+            signInData2]
     );
     for (let i = 0; i < signedTransaction.length; i++) {
         console.log("signature: " + Buffer.from(signedTransaction[i].signature).toString('hex'));

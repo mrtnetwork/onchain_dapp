@@ -22,7 +22,7 @@ async function getWallet() {
     window.addEventListener("wallet-standard:register-wallet", function s(e) {
         e.detail({
             register: function _(params) {
-                if (params !== undefined && params.name != undefined && params.name == 'MRT') {
+                if (params !== undefined && params.name != undefined && params.name == 'OnChain') {
                     completer.resolve(params)
                 }
             }
@@ -93,6 +93,7 @@ async function connect() {
     const r = await wallet.features["standard:connect"].connect();
 }
 async function signMessage() {
+    const wallet = await getWallet();
     const { signature } = await wallet.features["bitcoin:signPersonalMessage"].signPersonalMessage(
         { account: "2N5v1QHwpkM5TizqFTU4TEvv91rxcW1ku9W", message: Buffer.alloc(10, 0), messagePrefix: "jafar2x" }
     );

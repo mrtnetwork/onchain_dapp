@@ -22,7 +22,7 @@ async function getWallet() {
     window.addEventListener("wallet-standard:register-wallet", function s(e) {
         e.detail({
             register: function _(params) {
-                if (params !== undefined && params.name != undefined && params.name == 'MRT') {
+                if (params !== undefined && params.name != undefined && params.name == 'OnChain') {
                     completer.resolve(params)
                 }
             }

@@ -24,7 +24,7 @@ async function getWallet() {
     window.addEventListener("wallet-standard:register-wallet", function s(e) {
         e.detail({
             register: function _(params) {
-                if (params !== undefined && params.name != undefined && params.name == 'MRT') {
+                if (params !== undefined && params.name != undefined && params.name == 'OnChain') {
                     completer.resolve(params)
                 }
             }
@@ -44,11 +44,15 @@ async function connect() {
 
 async function sendTransaction(params) {
     let { accounts, wallet } = await connect()
-    const provider = new WsProvider('wss://westend-rpc.polkadot.io'); // Or any Substrate node
+    console.log(accounts.map((e) => e.chains));
+    // 0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3
+    // return;
+    const provider = new WsProvider('wss://rpc.polkadot.io'); // Or any Substrate node
     const api = await ApiPromise.create({ provider });
     const genesisHash = api.genesisHash.toHex();
     console.log('Genesis hash:' + genesisHash);
     accounts = accounts.filter(account => account.chains.includes("substrate:" + genesisHash));
+    console.log("accounts: " + accounts)
     if (!accounts) return;
     const transfer = api.tx.balances.transferAllowDeath(
         '5GZw9eAKnqecu6Jk51jyRx2SccJTSxvRW22wjg7k1P9mY3mC',

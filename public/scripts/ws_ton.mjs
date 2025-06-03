@@ -23,7 +23,7 @@ async function getWallet() {
         console.log("i got listener /!");
         e.detail({
             register: function _(params) {
-                if (params !== undefined && params.name != undefined && params.name == 'MRT') {
+                if (params !== undefined && params.name != undefined && params.name == 'OnChain') {
                     completer.resolve(params)
                 }
             }
