@@ -1,0 +1,23 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Wallet Standard</title>
+    <script src="bundle.js"></script>
+    <script src="../../scripts/bch/ws_bch.mjs" type="module"></script>
+</head>
+
+<body>
+    <button onclick="onChainDapp.bch.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.bch.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.bch.transfer()">Send Transfer</button><br><br>
+    <button onclick="onChainDapp.bch.requestAccounts()">Request Accounts</button><br><br>
+    <button onclick="onChainDapp.bch.listenOnWalletChanges()">Listen on wallet changed</button><br><br>
+    <button onclick="onChainDapp.bch.listenOnNetworkChanges()">Listen on bitcoin changed</button><br><br>
+    <button onclick="onChainDapp.bch.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>

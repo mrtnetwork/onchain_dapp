@@ -1,0 +1,24 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Substrate WalletConnect</title>
+    <script src="bundle.js"></script>
+    <script src="../../scripts/substrate/wc_substrate.mjs" type="module"></script>
+</head>
+
+<body>
+    <button onclick="onChainDapp.substrate.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.substrate.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.substrate.singAndSendTransaction()">Sign And Send Transaction</button><br><br>
+    <button onclick="onChainDapp.substrate.addNewChain()">Import New Substrate Network</button><br><br>
+    <button onclick="onChainDapp.substrate.requestAccounts()">Request Accounts</button><br><br>
+
+    <button onclick="onChainDapp.ping()">Ping</button><br><br>
+    <button onclick="onChainDapp.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>

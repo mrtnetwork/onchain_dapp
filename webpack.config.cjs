@@ -5,7 +5,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: './src/index.js', // Your main JavaScript file
     output: {
-        path: path.resolve(__dirname, 'public'),
+        path: path.resolve(__dirname, 'docs'),
         filename: 'bundle.js', // Output bundled file
     },
     optimization: {
@@ -44,9 +44,4 @@ module.exports = {
     ],
     mode: 'development',
     devtool: 'source-map',
-    devServer: {
-        static: path.resolve(__dirname, 'public'),
-        port: 8080,
-        open: true,
-    },
 };

@@ -1,0 +1,8 @@
+{
+    "url": "https://docs.ton.org/develop/dapps/ton-connect/manifest",                     
+    "name": "MRT",       
+    "iconUrl": "<app-icon-url>",       
+    "termsOfUseUrl": "<terms-of-use-url>",   
+    "privacyPolicyUrl": "<privacy-policy-url>"
+}
+

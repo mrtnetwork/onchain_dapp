@@ -1,0 +1,25 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptos WalletConnect</title>
+    <script src="../../../docs/bundle.js"></script>
+    <script src="../../scripts/aptos/wc_aptos.mjs" type="module"></script>
+</head>
+
+
+<body>
+    <button onclick="onChainDapp.aptos.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.aptos.signInMessage()">Sign In Message</button><br><br>
+    <button onclick="onChainDapp.aptos.getNetwork()">Get Network</button><br><br>
+    <button onclick="onChainDapp.aptos.signTransfer()">Sign Transfer Transaction</button><br><br>
+    <button onclick="onChainDapp.aptos.requestAccounts()">Request Account</button><br><br>
+ 
+    <button onclick="onChainDapp.ping()">Ping</button><br><br>
+    <button onclick="onChainDapp.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>
