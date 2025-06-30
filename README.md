@@ -1,1 +1,1 @@
-Instructions for sending Web3 transactions to the MRT Wallet.
+Instructions for sending Web3 transactions to the OnChain Wallet.
