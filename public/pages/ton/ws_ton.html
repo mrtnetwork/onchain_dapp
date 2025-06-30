@@ -1,0 +1,24 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton Wallet Standard</title>
+    <script src="bundle.js"></script>
+    <script src="../../scripts/ton/ws_ton.mjs" type="module"></script>
+</head>
+
+<body>
+    <button onclick="onChainDapp.ton.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.ton.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.ton.signTransaction()">Sign Transaction</button><br><br>
+    <button onclick="onChainDapp.ton.signAndSendTransaction()">Sign And Send Transaction</button><br><br>
+    <button onclick="onChainDapp.ton.requestAccounts()">Request Accounts</button><br><br>
+    <button onclick="onChainDapp.ton.listenOnWalletChanges()">Listen on wallet changed</button><br><br>
+    <button onclick="onChainDapp.ton.listenOnNetworkChanges()">Listen on ton changed</button><br><br>
+    <button onclick="onChainDapp.ton.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sui WalletConnect</title>
+    <script src="bundle.js"></script>
+    <script src="../../scripts/sui/wc_sui.mjs" type="module"></script>
+</head>
+
+<body>
+    <button onclick="onChainDapp.sui.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.sui.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.sui.signTransaction()">Sign Transaction</button><br><br>
+    <button onclick="onChainDapp.sui.signAndExcuteTransaction()">Sign And Excute Transaction</button><br><br>
+   
+    <button onclick="onChainDapp.ping()">Ping</button><br><br>
+    <button onclick="onChainDapp.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>

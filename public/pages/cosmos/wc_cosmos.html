@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmos WalletConnect</title>
+    <script src="bundle.js"></script>
+    <script src="../../scripts/cosmos/wc_cosmos.mjs" type="module"></script>
+</head>
+
+<body>
+    <button onclick="onChainDapp.cosmos.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.cosmos.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.cosmos.requestAccounts()">Request Accounts</button><br><br>
+    <button onclick="onChainDapp.cosmos.signDirectTransaction()">Sign and Send Transaction Direct</button><br><br>
+    <button onclick="onChainDapp.cosmos.signAminoTransaction()">Sign Transaction Amino</button><br><br>
+    <button onclick="onChainDapp.cosmos.addNewChain()">Import Chain</button><br><br>
+    <button onclick="onChainDapp.ping()">Ping</button><br><br>
+    <button onclick="onChainDapp.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>

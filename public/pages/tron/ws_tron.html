@@ -1,0 +1,25 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tron Wallet Standard</title>
+    <script src="bundle.js"></script>
+    <script src="../../scripts/tron/tronweb.js"></script>
+    <script src="../../scripts/tron/ws_tron.mjs" type="module"></script>
+</head>
+
+<body>
+    <button onclick="onChainDapp.tron.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.tron.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.tron.transfer()">Sign Transfer Transaction</button><br><br>
+    <button onclick="onChainDapp.tron.signAndSendTransfer()">Sign and Send Transfer Transaction</button><br><br>
+    <button onclick="onChainDapp.tron.requestAccounts()">Request Accounts</button><br><br>
+    <button onclick="onChainDapp.tron.listenOnWalletChanges()">Listen on wallet changed</button><br><br>
+    <button onclick="onChainDapp.tron.listenOnNetworkChanges()">Listen on tron changed</button><br><br>
+    <button onclick="onChainDapp.tron.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>
