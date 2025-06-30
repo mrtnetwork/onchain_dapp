@@ -44,4 +44,9 @@ module.exports = {
     ],
     mode: 'development',
     devtool: 'source-map',
+    // devServer: {
+    //     static: path.resolve(__dirname, 'docs'),
+    //     port: 8080,
+    //     open: true,
+    // },
 };
