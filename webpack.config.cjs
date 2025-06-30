@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/index.js', // Your main JavaScript file
     output: {
         path: path.resolve(__dirname, 'docs'),
-        publicPath: '/mrt_wallet_web3_js_examples/', 
+        publicPath: '/onchain_dapp/', 
         filename: 'bundle.js', // Output bundled file
     },
     optimization: {

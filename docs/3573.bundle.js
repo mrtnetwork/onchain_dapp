@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkpython_server"] = self["webpackChunkpython_server"] || []).push([[3573],{
+(self["webpackChunkOnChain_DAPP_Examples"] = self["webpackChunkOnChain_DAPP_Examples"] || []).push([[3573],{
 
 /***/ 7610:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
