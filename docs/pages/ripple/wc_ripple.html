@@ -1,0 +1,26 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar WalletConnect</title>
+    <script src="../../bundle.js"></script>
+    <script src="../../scripts/stellar/stellar_sdk.js"></script>
+    <script src="../../scripts/stellar/wc_stellar.mjs" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="../../statics/favicon.ico"/>
+</head>
+
+<body>
+    <button onclick="onChainDapp.stellar.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.stellar.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.stellar.signTransaction()">Sign Transaction</button><br><br>
+    <button onclick="onChainDapp.stellar.signAndSendTransaction()">Sign And Send Transaction</button><br><br>
+    <button onclick="onChainDapp.stellar.requestAccounts()">Request Accounts</button><br><br>
+   
+    <button onclick="onChainDapp.ping()">Ping</button><br><br>
+    <button onclick="onChainDapp.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XRPL Wallet Standard</title>
+    <script src="../../bundle.js"></script>
+    <script src="../../scripts/ripple/ws_ripple.mjs" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="../../statics/favicon.ico"/>
+</head>
+
+<body>
+    <button onclick="onChainDapp.xrpl.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.xrpl.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.xrpl.signTransaction()">Sign Transaction</button><br><br>
+    <button onclick="onChainDapp.xrpl.signAndSendTransaction()">Sign And Send Transaction</button><br><br>
+    <button onclick="onChainDapp.xrpl.requestAccounts()">Request Accounts</button><br><br>
+    <button onclick="onChainDapp.xrpl.listenOnWalletChanges()">Listen on wallet changed</button><br><br>
+    <button onclick="onChainDapp.xrpl.listenOnNetworkChanges()">Listen on stellar changed</button><br><br>
+    <button onclick="onChainDapp.xrpl.disconnect()">Disconnect</button><br><br>
+</body>
+
+</html>

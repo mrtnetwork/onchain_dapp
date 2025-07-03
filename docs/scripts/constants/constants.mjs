@@ -116,7 +116,12 @@ const substrateCaip2 = "polkadot";
 const substrateWestendNetwork = "polkadot:67f9723393ef76214df0118c34bbbd3d"
 const substrateWsWestendNetwork = "polkadot:67f9723393ef76214df0118c34bbbd3d"
 const polkadot = { substrateCaip2, substrateWestendNetwork, substrateWsWestendNetwork }
+const xrplCaip2 = "xrpl";
+const xrplWsTestnetNetwork = "xrpl:1"
+
+const ripple = { xrplCaip2, xrplWsTestnetNetwork }
 
 
 
-export { ethereum, tron, aptos, solana, sui, stellar, ton, btc, cosmos, polkadot };
+
+export { ethereum, tron, aptos, solana, sui, stellar, ton, btc, cosmos, polkadot, xrplCaip2, ripple };
