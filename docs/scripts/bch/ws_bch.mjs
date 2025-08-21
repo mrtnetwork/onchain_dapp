@@ -2,12 +2,14 @@ import { getWallet } from '../utils/ws.mjs'
 import { btc } from '../constants/constants.mjs'
 import * as utils from '../utils/utils.mjs';
 import { createPsbt, createTransfer } from '../bitcoin/bitcoin_utils.mjs';
-const network = btc.bchTestnet;
+const network = btc.bchCaip2Testnet;
 async function connect() {
-    console.log("networj: " + network)
+    // console.log("networj: " + network)
     const provider = await getWallet();
-    let { accounts } = await provider.features["bitcoin:connect"].connect(network);
+    let { accounts } = await provider.features["bch:connect"].connect(network);
+    // console.log("accounts: " + JSON.stringify(accounts))
     accounts = accounts.filter(account => account.chains.includes(network));
+    // console.log("accounts: " + JSON.stringify(accounts))
     if (accounts.length === 0) {
         throw new Error(`No approved accounts found for network "${network} (BitcoinCash chipnet)". Please connect an account in your wallet.`);
     }
@@ -22,7 +24,7 @@ async function signMessage() {
     await utils.runMethod({
         method: "signMessage",
         asyncFunc: async function name() {
-            const { signature } = await provider.features["bitcoin:signPersonalMessage"].signPersonalMessage(params);
+            const { signature } = await provider.features["bch:signPersonalMessage"].signPersonalMessage(params);
             return signature;
         }
     })
@@ -31,13 +33,13 @@ async function signMessage() {
 
 async function transfer() {
     const { accounts, provider } = await connect();
-    const recipient = prompt("Please enter a valid bitcoin destionation address: ", "bchtest:qqcpqx9h5x2u5lpn3e52rqkpqcy9pwrsfy6lgv9mg5");
+    const recipient = prompt("Please enter a valid bitcoin cash destionation address: ", "bchtest:qqcpqx9h5x2u5lpn3e52rqkpqcy9pwrsfy6lgv9mg5");
     const params = await createTransfer(accounts, recipient);
 
     await utils.runMethod({
         method: "sendTransfer",
         asyncFunc: async function name() {
-            const { txid } = await provider.features["bitcoin:sendTransaction"].sendTransaction(params);
+            const { txid } = await provider.features["bch:sendTransaction"].sendTransaction(params);
             return txid;
         }
     })
@@ -48,7 +50,7 @@ async function requestAccounts() {
     await utils.runMethod({
         method: "bitcoin_requestAccounts",
         asyncFunc: async function name() {
-            const { accounts } = await provider.features["bitcoin:connect"].connect();
+            const { accounts } = await provider.features["bch:connect"].connect();
             return accounts.map(e => e.address);
         }
     })
@@ -58,7 +60,7 @@ async function disconnect() {
     await utils.runMethod({
         method: "disconnect",
         asyncFunc: async function name() {
-            const disconnect = await provider.features["bitcoin:disconnect"].disconnect();
+            const disconnect = await provider.features["bch:disconnect"].disconnect();
             return disconnect;
         }
     })
@@ -66,7 +68,7 @@ async function disconnect() {
 
 async function listenOnNetworkChanges() {
     const { provider } = await connect();
-    await provider.features["bitcoin:events"].on("change", function name({ accounts, chains }) {
+    await provider.features["bch:events"].on("change", function name({ accounts, chains }) {
         if (accounts) {
             console.log("wallet accounts changed: " + JSON.stringify(accounts.map(e => e.address)))
         }

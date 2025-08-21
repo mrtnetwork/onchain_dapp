@@ -1,0 +1,40 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardano Browser Wallet</title>
+    <script src="../../bundle.js"></script>
+    <script src="../../scripts/cardano/browser_cardano.mjs" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="../../statics/favicon.ico"/>
+</head>
+
+<body>
+    <button onclick="onChainDapp.cardano.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.cardano.getExtensions()">Get Extensions</button><br><br>
+    <button onclick="onChainDapp.cardano.isEnabled()">Is Enabled</button><br><br>
+    <button onclick="onChainDapp.cardano.getUsedAddresses()">Get Used Addresses</button><br><br>
+    <button onclick="onChainDapp.cardano.getUnusedAddresses()">Get Unused Addresses</button><br><br>
+    <button onclick="onChainDapp.cardano.getChangeAddress()">Get Change Address</button><br><br>
+    <button onclick="onChainDapp.cardano.getBalance()">Get Balance</button><br><br>
+    <button onclick="onChainDapp.cardano.getRewardAddresses()">Get Reward Addresses</button><br><br>
+    <button onclick="onChainDapp.cardano.getUtxos()">Get Utxos</button><br><br>
+    <button onclick="onChainDapp.cardano.signData()">Sign Data</button><br><br>
+    <button onclick="onChainDapp.cardano.getCollateral()">Get Collateral</button><br><br>
+    <button onclick="onChainDapp.cardano.signTx()">Sign Tx</button><br><br>
+    <button onclick="onChainDapp.cardano.signAndSubmitTx()">Sign And Submit Tx</button><br><br>
+    <button onclick="onChainDapp.cardano.getAccoutPubKey()">Get Account BIP32 PublicKey</button><br><br>
+    <h5>CIP-0103 Connected account must hold ≥ 5 ADA</h5>
+    <button onclick="onChainDapp.cardano.signTxs()">Sign Txs</button><br><br>
+    <button onclick="onChainDapp.cardano.signAndSubmitTxes()">Sign And Submit Txs</button><br><br>
+    <h5>CIP-0106 Make sure your dapp connected with multisig address in wallet</h5>
+    <button onclick="onChainDapp.cardano.getScriptRequirements()">Get Script Requirements</button><br><br>
+    <button onclick="onChainDapp.cardano.getScript()">Get Script</button><br><br>
+    <button onclick="onChainDapp.cardano.submitUnsignedTx()">Submit Unsigned Tx</button><br><br>
+ 
+</body>
+
+
+</html>

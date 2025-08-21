@@ -39,7 +39,6 @@ async function connect() {
     const wallet = await getWallet();
     let { accounts } = await wallet.features["sui:connect"].connect();
     accounts = accounts.filter(account => account.chains.includes("sui:testnet"));
-    console.log("testnets: " + accounts.length)
     return { accounts, wallet };
 }
 
@@ -57,7 +56,6 @@ async function transferExample() {
     const { digest, effects } = await wallet.features["sui:signAndExecuteTransaction"].signAndExecuteTransaction(
         { transaction, account: accounts[0], chain: 'sui:testnet' }
     );
-    console.log("digest: " + digest)
 }
 async function signExample() {
     const { accounts, wallet } = await connect()
@@ -68,13 +66,10 @@ async function signExample() {
     const [coin] = transaction.splitCoins(transaction.gas, [1000]);
     transaction.transferObjects([coin], '0x4637f89fdf75bf020b2f00a5dedeb6a405728c6062d44ed9c816f5683dd0f72a');
     transaction.setSender(accounts[0].address)
-    console.log("set sender set");
     await transaction.build({ client: client })
-    console.log("tx buildiyo ? ");
     const { bytes, signature } = await wallet.features["sui:signTransaction"].signTransaction(
         { transaction, account: accounts[0], chain: 'sui:testnet' }
     );
-    console.log("signature:  " + signature)
 }
 async function signMessageExample() {
     const { account, wallet } = await connect()
@@ -86,7 +81,6 @@ async function signMessageExample() {
     const { args } = await wallet.features["sui:signMessage"].signMessage(
         message
     );
-    console.log(args.bcsToHex())
 }
 
 async function signMessage() {
@@ -99,7 +93,6 @@ async function signMessage() {
     const { signature } = await await wallet.features["sui:signMessage"].signMessage(
         params
     );
-    console.log("signature: " + signature)
 }
 async function listenOnSuiEvents() {
     const wallet = await getWallet();

@@ -7,18 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnChain DAPP Examples</title>
     <script src="bundle.js"></script>
-    <!-- <base href="/onchain_dapp/"> -->
-    <link rel="icon" type="image/x-icon" href="../../statics/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="../../statics/favicon.ico" />
 </head>
 
 <body>
     <h1>Hello!</h1>
-    <h3>These pages provide examples of how to send requests to the OnChain wallet. Some buttons may not work as expected, and certain requests may require specific conditions to be met. Please refer to the code for each page to understand how to interact with the wallet properly.</h3>
+    <h3>These pages provide examples of how to send requests to the OnChain wallet. Some buttons may not work as
+        expected, and certain requests may require specific conditions to be met. Please refer to the code for each page
+        to understand how to interact with the wallet properly.</h3>
+
+    <h5>Cardano</h5>
+    <button onclick="window.location.href='pages/cardano/ws_cardano'">Wallet Standard</button><br><br>
+    <button onclick="window.location.href='pages/cardano/wc_cardano'">WalletConnect</button><br><br>
+    <button onclick="window.location.href='pages/cardano/browser_cardano'">CIP-0030</button><br><br>
+
     <h5>Ethereum</h5>
     <button onclick="window.location.href='pages/ethereum/eip1193_eth'">EIP-1193</button><br><br>
     <button onclick="window.location.href='pages/ethereum/eip6963_eth'">EIP-6963</button><br><br>
     <button onclick="window.location.href='pages/ethereum/ws_eth'">Wallet Standard</button><br><br>
     <button onclick="window.location.href='pages/ethereum/wc_eth'">WalletConnect</button><br><br>
+
     <h5>Tron</h5>
     <button onclick="window.location.href='pages/tron/tip_tron'">TIP-1193</button><br><br>
     <button onclick="window.location.href='pages/tron/ws_tron'">Wallet Standard</button><br><br>
@@ -50,7 +58,19 @@
     <h5>Stellar</h5>
     <button onclick="window.location.href='pages/stellar/ws_stellar'">Wallet Standard</button><br><br>
     <button onclick="window.location.href='pages/stellar/wc_stellar'">WalletConnect</button><br><br>
+    <h5>XRPL</h5>
+    <button onclick="window.location.href='pages/ripple/ws_ripple'">Wallet Standard</button><br><br>
+    <button onclick="window.location.href='pages/ripple/wc_ripple'">WalletConnect</button><br><br>
+
+    <h5>Monero</h5>
+    <button onclick="window.location.href='pages/monero/ws_monero'">Wallet Standard</button><br><br>
+    <button onclick="window.location.href='pages/monero/wc_monero'">WalletConnect</button><br><br>
+
+
+
+
 </body>
+
 
 
 </html>

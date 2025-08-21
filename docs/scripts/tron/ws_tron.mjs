@@ -5,7 +5,6 @@ import { broadcastTx, buildTransfer } from "./tron_utils.mjs"
 const network = tron.tronWsShastaNetwork;
 async function connect() {
     const provider = await getWallet();
-    console.log("provider");
     let { accounts } = await provider.features["tron:connect"].connect(network);
     accounts = accounts.filter(account => account.chains.includes(network));
     if (accounts.length === 0) {
@@ -65,7 +64,6 @@ async function signAndSendTransfer() {
     });
     transaction.signature = signature
     const { txid } = await broadcastTx(transaction);
-    console.log(txid);
     alert(`TxID: ${txid}`);
 }
 async function requestAccounts() {

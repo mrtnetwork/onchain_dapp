@@ -4,7 +4,6 @@ import * as utils from '../utils/utils.mjs';
 async function connect() {
     const { session, provider } = await wc.initWalletConnect(ethereum.eip155Caip2, ethereum.eip155TestnetNetwrk);
     const accounts = wc.getApprovedAccounts({ session, caip10: ethereum.eip155TestnetNetwrk });
-    console.log("accounts: " + JSON.stringify(accounts));
     if (accounts.length === 0) {
         throw new Error(`No approved accounts found for network "${ethereum.eip155TestnetNetwrk} (Ethereum Sepolia testnet)". Please connect an account in your wallet.`);
     }

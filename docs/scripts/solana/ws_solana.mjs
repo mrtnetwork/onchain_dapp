@@ -24,7 +24,7 @@ async function signMessage() {
         method: "solana_signMessage",
         asyncFunc: async function name() {
             const [{ signature }] = await provider.features["solana:signMessage"].signMessage(params);
-            return Buffer.from(signature).toString("hex");
+            return Buffer.from(signature).toString("base64");
         }
     })
 }
@@ -52,7 +52,7 @@ async function signInMessage() {
         method: "solana_signIn",
         asyncFunc: async function name() {
             const [{ signature }] = await provider.features["solana:signIn"].signIn(params);
-            return Buffer.from(signature).toString("hex");
+            return Buffer.from(signature).toString("base64");
         }
     })
 
@@ -71,7 +71,7 @@ async function signTransaction() {
         method: "solana_signTransaction",
         asyncFunc: async function name() {
             const [{ signedTransaction }] = await provider.features["solana:signTransaction"].signTransaction(params);
-            return Buffer.from(signedTransaction).toString("hex");
+            return Buffer.from(signedTransaction).toString("base64");
         }
     })
 }

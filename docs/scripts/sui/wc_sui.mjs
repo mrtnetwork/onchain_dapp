@@ -6,7 +6,6 @@ const network = sui.suiTestnetNetwork;
 async function connect() {
     const { session, provider } = await wc.initWalletConnect(sui.suiCaip2, network);
     const accounts = wc.getApprovedAccounts({ session, caip10: network });
-    console.log("accounts: " + JSON.stringify(accounts));
     if (accounts.length === 0) {
         throw new Error(`No approved accounts found for network "${network} (Sui testnet)". Please connect an account in your wallet.`);
     }

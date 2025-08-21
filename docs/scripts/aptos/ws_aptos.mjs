@@ -5,8 +5,6 @@ const network = aptos.aptosWsTestnetNetwork;
 async function connect() {
     const provider = await getWallet();
     let { args, status } = await provider.features["aptos:connect"].connect(network);
-    console.log("done?");
-    console.log("data: " + JSON.stringify(args))
     let accounts = [args];
     accounts = accounts.filter(account => account.chains.includes(network));
     if (accounts.length === 0) {

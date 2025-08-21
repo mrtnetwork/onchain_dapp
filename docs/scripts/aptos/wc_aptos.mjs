@@ -17,7 +17,6 @@ async function signInMessage() {
         'message': 'Sign in test message.',
         'nonce': '1234567'
     };
-    console.log("connect: " + network)
     await utils.runMethod({
         method: "aptos_signMessage",
         asyncFunc: async function name() {

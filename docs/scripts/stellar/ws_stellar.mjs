@@ -4,11 +4,8 @@ import * as utils from '../utils/utils.mjs';
 import { createTransfer } from '../stellar/stellar_utils.mjs';
 const network = stellar.stellarWsTestnetNetwork;
 async function connect() {
-    console.log("connect called!");
     const provider = await getWallet();
-    console.log("provider");
     let { accounts } = await provider.features["stellar:connect"].connect(network);
-    console.log("accounts " + accounts);
     accounts = accounts.filter(account => account.chains.includes(network));
     if (accounts.length === 0) {
         throw new Error(`No approved accounts found for network "${network} (Bitcoin testnet4)". Please connect an account in your wallet.`);

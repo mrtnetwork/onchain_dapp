@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monero Wallet Standard</title>
+    <script src="../../bundle.js"></script>
+    <script src="../../scripts/monero/ws_monero.mjs" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="../../statics/favicon.ico"/>
+</head>
+
+<body>
+    <button onclick="onChainDapp.monero.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.monero.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.monero.signAndSendTransaction()">Sign And Send Transaction</button><br><br>
+    <button onclick="onChainDapp.monero.requestAccounts()">Request Accounts</button><br><br>
+    <button onclick="onChainDapp.monero.listenOnWalletChanges()">Listen on wallet changed</button><br><br>
+    <button onclick="onChainDapp.monero.listenOnNetworkChanges()">Listen on stellar changed</button><br><br>
+    <button onclick="onChainDapp.monero.disconnect()">Disconnect</button><br><br>
+    <!--  -->
+</body>
+
+</html>

@@ -5,9 +5,7 @@ import { createTransfer } from '../ton/ton_utils.mjs';
 const network = ton.tonWsTestnetNetwork;
 async function connect() {
     const provider = await getWallet();
-    console.log("provider");
     let { accounts } = await provider.features["ton:connect"].connect(network);
-    console.log("accounts " + JSON.stringify(accounts));
     accounts = accounts.filter(account => account.chains.includes(network));
     if (accounts.length === 0) {
         throw new Error(`No approved accounts found for network "${network} (Ton testnet)". Please connect an account in your wallet.`);

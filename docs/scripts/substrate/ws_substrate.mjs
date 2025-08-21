@@ -5,7 +5,6 @@ import * as utils from '../utils/utils.mjs';
 const network = polkadot.substrateWsWestendNetwork;
 async function connect() {
     const provider = await getWallet();
-    console.log("provider");
     let { accounts } = await provider.features["polkadot:connect"].connect(network);
     accounts = accounts.filter(account => account.chains.includes(network));
     if (accounts.length === 0) {

@@ -34,7 +34,6 @@ async function signPsbt() {
         const accountInfo = await provider.features["bitcoin:getAccountAddresses"].getAccountAddresses(params);
         addresses.push(...accountInfo);
     }
-    console.log("addresses: " + JSON.stringify(addresses));
     const recipient = prompt("Please enter a valid bitcoin destionation address: ", "mju61fosB2S8zYbxAuoMeufjVMnhZ2NvFv");
     const params = await createPsbt({ addresses, recipient, satPerByte: 2 });
     await utils.runMethod({

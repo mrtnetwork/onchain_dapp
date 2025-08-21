@@ -1,6 +1,5 @@
 async function _getTx(txId, network) {
     const url = "https://mempool.space/testnet4/api/tx/" + txId + "/hex";
-    console.log("url: " + url);
     let tx = await fetch(url);
     if (tx.ok) {
         let txHex = await tx.text();
@@ -45,12 +44,9 @@ async function _buildInputs(info) {
     let nonWitnessUtxo = null
     const isWitness = _isWitness(type)
     const isP2tr = _isP2tr(type);
-    console.log("is come ?!");
-    console.log("hash: " + info.hash);
     if (!isWitness) {
         nonWitnessUtxo = await _getTx(info.hash)
     }
-    console.log("is witness: " + isWitness)
     const input = {
         hash: info.hash,
         index: info.index,
@@ -145,8 +141,12 @@ function _estimateInputSize(inputs, outputs) {
                 for (let i = 0; i < 3; i++) {
                     witnessStackSize += _varIntSize(signatureSize) + signatureSize;
                 }
+                if (input.witnessScript == null) {
+                    witnessStackSize += _varIntSize(105) + 105;
+                } else {
+                    witnessStackSize += _varIntSize(input.witnessScript.byteLength) + input.witnessScript.byteLength;
+                }
 
-                witnessStackSize += _varIntSize(input.witnessScript.byteLength) + input.witnessScript.byteLength;
             } else if (input.isP2tr) {
                 witnessStackCount = 1;
                 witnessStackSize += _varIntSize(schnorSigSize) + schnorSigSize;
@@ -184,7 +184,6 @@ async function createPsbt({ addresses, recipient, satPerByte = 2 }) {
         const address = addresses[i];
         let url = "https://mempool.space/testnet4/api/address/" + address.address + "/utxo"
         let response = await fetch(url);
-        console.log("isok: " + response.ok)
         if (!response.ok) throw Error("Unable to retrive address utxos.")
         if (response.ok) {
             const utxos = await response.json();
@@ -211,12 +210,10 @@ async function createPsbt({ addresses, recipient, satPerByte = 2 }) {
             }
         }
     }
-    console.log("utxos done ?!" + addressesUtxos.length);
     if (addressesUtxos.length == 0) {
         console.log("no utxos");
         return;
     }
-    // console.log(JSON.stringify(addressesUtxos));
     let psbtInputs = [];
     for (let i = 0; i < addressesUtxos.length; i++) {
         let utxo = addressesUtxos[i];
@@ -227,12 +224,9 @@ async function createPsbt({ addresses, recipient, satPerByte = 2 }) {
     const totalInputValue = addressesUtxos.reduce((sum, input) => {
         return sum + (input.value || 0)
     }, 0)
-    console.log("here ?!");
     const n = bitcoin.networks.testnet
-    console.log("here ?!2 " + JSON.stringify(psbtInputs));
     const psbt = new bitcoin.Psbt({ network: n });
     psbt.addInputs(psbtInputs);
-    console.log("here ?!2");
     const value = 100000;
     const destionation = recipient || "mju61fosB2S8zYbxAuoMeufjVMnhZ2NvFv";
     const payment = bitcoin.address.toOutputScript(destionation, n);
@@ -241,9 +235,7 @@ async function createPsbt({ addresses, recipient, satPerByte = 2 }) {
         address: destionation,
         script: payment
     }
-    console.log("here ?3!");
     const changeAddress = addressesUtxos[0].address.address;
-    console.log("here ?!4");
     const change = {
         value: 1,
         address: changeAddress,
@@ -257,7 +249,6 @@ async function createPsbt({ addresses, recipient, satPerByte = 2 }) {
     change.value = changeAmount
     psbt.addOutput(change);
     const signers = addresses.map(e => e.address)
-    console.log("signers: " + JSON.stringify(signers));
     return { accounts: signers, psbt: psbt.toBase64() }
 }
 

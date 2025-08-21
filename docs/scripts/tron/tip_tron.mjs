@@ -7,7 +7,6 @@ async function connect() {
   const provider = getTipWallet();
   const params = [network];
   const accounts = await provider.request({ method: "tron_requestAccounts", params });
-  console.log("accounts: " + JSON.stringify(accounts));
   if (accounts.length === 0) {
     throw new Error(`No approved accounts found for network "${network} (Tron shasta testnet)". Please connect an account in your wallet.`);
   }
@@ -37,7 +36,6 @@ async function transfer() {
   const { accounts, provider } = await connect();
   const input = prompt("Please enter a valid destionation address: ", "TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeL");
   const transaction = await buildTransfer({ account: accounts[0], input });
-  console.log("tx: " + JSON.stringify(transaction))
   const params = [transaction]
   await utils.runMethod({
     method: "tron_signTransaction",
@@ -61,7 +59,6 @@ async function signAndSendTransfer() {
   });
   transaction.signature = signatures;
   const { txid } = await broadcastTx(transaction);
-  console.log(txid);
   alert(`TxID: ${txid}`);
 }
 
@@ -79,7 +76,6 @@ async function transferUsingTronWeb() {
     }
   })
   const { txid } = await broadcastTx(signedTransaction);
-  console.log(txid);
   alert(`TxID: ${txid}`);
 }
 

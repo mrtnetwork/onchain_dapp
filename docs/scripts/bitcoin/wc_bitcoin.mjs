@@ -6,7 +6,6 @@ const network = btc.bitcoinTestnet4Network
 async function connect() {
     const { session, provider } = await wc.initWalletConnect(btc.bitcoinCaip2, network);
     const accounts = wc.getApprovedAccounts({ session, caip10: network });
-    console.log("accounts: " + JSON.stringify(accounts));
     if (accounts.length === 0) {
         throw new Error(`No approved accounts found for network "${network} (Bitcoin testnet4)". Please connect an account in your wallet.`);
     }
@@ -36,7 +35,6 @@ async function signPsbt() {
         const accountInfo = await provider.request({ method: "getAccountAddresses", params }, network);
         addresses.push(...accountInfo);
     }
-    console.log("addresses: " + JSON.stringify(addresses));
     const recipient = prompt("Please enter a valid bitcoin destionation address: ", "mju61fosB2S8zYbxAuoMeufjVMnhZ2NvFv");
     const params = await createPsbt({ addresses, recipient, satPerByte: 2 });
     await utils.runMethod({

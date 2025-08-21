@@ -4,11 +4,9 @@ import * as utils from '../utils/utils.mjs';
 import { createPsbt, createTransfer } from '../bitcoin/bitcoin_utils.mjs';
 const network = btc.bchCaip2Testnet
 async function connect() {
-    console.log("network: " + network)
     const { session, provider } = await wc.initWalletConnect(btc.bchCaip2, network);
 
     const accounts = wc.getApprovedAccounts({ session, caip10: network });
-    console.log("accounts: " + JSON.stringify(accounts));
     if (accounts.length === 0) {
         throw new Error(`No approved accounts found for network "${network} (BitcoinCash chipnet)". Please connect an account in your wallet.`);
     }
@@ -47,9 +45,9 @@ async function transfer() {
 async function requestAccounts() {
     const { provider } = await connect();
     await utils.runMethod({
-        method: "bitcoin_requestAccounts",
+        method: "bch_requestAccounts",
         asyncFunc: async function name() {
-            const accounts = await provider.request({ method: "bitcoin_requestAccounts" }, network);
+            const accounts = await provider.request({ method: "bch_requestAccounts" }, network);
             return accounts;
         }
     })

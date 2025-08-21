@@ -8,7 +8,6 @@ async function createTransaction(signer, recipient) {
         signer
     );
     const accounts = await signer.getAccounts();
-    console.log("accountsdd: " + JSON.stringify(accounts[0]))
     return await signingClient.sendTokens(
         accounts[0].address,
         recipient || "cosmos1xqgp3dapjh98cvuwdzsc9sgxppgtsuzf2lqure",

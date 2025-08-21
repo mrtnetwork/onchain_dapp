@@ -26,15 +26,20 @@ async function startAppKit(provider, caip2, chain) {
     });
     appkit.open();
     let params = {};
+    console.log("chain: " + chain)
     params[caip2] = {
         methods: [
         ],
         chains: [chain],
-        events: []
+        events: [],
+        rpcMap: {
+            "cip34:0-1": "https://google.com",
+            "cip34:1-764824073": "https://google.com",
+        },
     }
-    console.log("params: " + JSON.stringify(params))
+    console.log("params: ${params"+JSON.stringify(params))
     const client = await provider.connect({
-        namespaces: params,
+        namespaces: params
     });
 }
 async function initWalletConnectInternal(completer) {
@@ -42,7 +47,6 @@ async function initWalletConnectInternal(completer) {
         provider = await UniversalProvider.init({
             projectId: 'eca409135e9616e51b4e4de241abe322'
         });
-        console.log("init done!");
         provider.on("display_uri", (uri) => {
             console.log("URI for WalletConnect modal:", uri);
         });
@@ -88,10 +92,6 @@ async function initWalletConnect(caip2, chain) {
             return initWalletConnect(caip2, chain);
         }
     }
-    console.log("active session: " + JSON.stringify(result.session));
-    console.log("caip: " + caip2)
-    // console.log("caip: " + provider.setDefaultChain)
-    // provider.setDefaultChain("tron",undefined)
     return { session: result.session, provider: result.provider, approved };
 
 

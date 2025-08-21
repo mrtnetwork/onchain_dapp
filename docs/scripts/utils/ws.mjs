@@ -35,9 +35,19 @@ function getEIPWallet() {
     if (window.ethereum !== undefined && window.ethereum?.isOnChain !== undefined && window.ethereum?.isOnChain) {
         return window.ethereum;
     }
+    if (window.ethereum !== undefined) {
+        return window.ethereum;
+    }
     throw Error("OnChain injected wallet not found.")
 }
 
+
+function getCardanoWallet() {
+    if (window.cardano !== undefined && window.cardano?.onChain !== undefined && window.cardano?.onChain !== null) {
+        return window.cardano.onChain;
+    }
+    throw Error("OnChain injected wallet not found.")
+}
 
 
 async function getEIP6963Wallet() {
@@ -54,10 +64,10 @@ async function getEIP6963Wallet() {
     });
     window.dispatchEvent(event);
     _eip6963Wallet = await completer.promise;
-    
+
     return _eip6963Wallet;
 
 }
 
 
-export { getWallet, getTipWallet, getEIPWallet, getEIP6963Wallet };
+export { getWallet, getTipWallet, getEIPWallet, getEIP6963Wallet, getCardanoWallet };

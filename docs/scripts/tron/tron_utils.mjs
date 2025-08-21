@@ -17,7 +17,6 @@ async function buildTransfer({ account, destination }) {
 async function broadcastTx(signedTransaction) {
     const tronweb = await getTronWeb();
     let transaction = await tronweb.trx.sendRawTransaction(signedTransaction);
-    console.log("txs: " + JSON.stringify(transaction))
     return transaction;
 }
 

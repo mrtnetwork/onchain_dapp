@@ -1,14 +1,14 @@
 import { getWallet } from '../utils/ws.mjs'
-import { ripple } from '../constants/constants.mjs'
+import { xrp } from '../constants/constants.mjs'
 import * as utils from '../utils/utils.mjs';
-const network = ripple.xrplWsTestnetNetwork;
+import { createTransfer, submitTx, createMintNFT } from '../ripple/ripple_utils.mjs'
+const network = xrp.xrpWsTestnetNetwork;
 async function connect() {
     const provider = await getWallet();
     let { accounts } = await provider.features["xrpl:connect"].connect(network);
-    console.log("accounts " + JSON.stringify(accounts));
     accounts = accounts.filter(account => account.chains.includes(network));
     if (accounts.length === 0) {
-        throw new Error(`No approved accounts found for network "${network} (Ripple testnet)". Please connect an account in your wallet.`);
+        throw new Error(`No approved accounts found for network "${network} (XRP testnet)". Please connect an account in your wallet.`);
     }
     return { provider, accounts };
 }
@@ -34,36 +34,58 @@ async function signMessage() {
         method: "xrpl_signMessage",
         asyncFunc: async function name() {
             const { signature } = await provider.features["xrpl:signMessage"].signMessage(params);
-            return Buffer.from(signature).toString("hex");
+            return Buffer.from(signature).toString("hex").toUpperCase();
         }
     })
 }
 async function signTransaction() {
-    // const { accounts, provider } = await connect();
-    // const recipient = prompt("Please enter a valid stellar destionation address: ", "GC6PAZDKUW4LTAIDFNARUMXW5GQPZLKSHXXZV2KW4MWACCJX5VKC6QAY");
-    // const transaction = await createTransfer(accounts[0].address, recipient);
-    // const params = { transaction, account: accounts[0] };
-    // console.log("transaction created ?: ");
-    // await utils.runMethod({
-    //     method: "stellar_signTransaction",
-    //     asyncFunc: async function name() {
-    //         const { envlope } = await provider.features["stellar:signTransaction"].signTransaction(params);
-    //         return envlope;
-    //     }
-    // })
+    const { accounts, provider } = await connect();
+    const recipient = prompt("Please enter a valid XRP destionation address: ", "rp1HToegsb2QMBDkhpz6rdfaArfKCj7PK8");
+    let transaction = await createTransfer(accounts[0].address, recipient);
+    const params = { transaction, account: accounts[0] };
+    await utils.runMethod({
+        method: "xrpl_signTransaction",
+        asyncFunc: async function name() {
+            const result = await provider.features["xrpl:signTransaction"].signTransaction(params);
+            const tx = await submitTx(result);
+            if (tx.result.engine_result !== "tesSUCCESS") {
+                throw Error(tx.result.engine_result)
+            }
+            return tx.result.tx_json.hash;
+        }
+    })
+
+}
+async function signMintNftTransaction() {
+    const { accounts, provider } = await connect();
+    let transaction = await createMintNFT(accounts[0].address);
+    transaction.Fee = 0
+    const params = { transaction, account: accounts[0] };
+    await utils.runMethod({
+        method: "xrpl_signTransaction",
+        asyncFunc: async function name() {
+            const result = await provider.features["xrpl:signTransaction"].signTransaction(params);
+            const tx = await submitTx(result);
+            if (tx.result.engine_result !== "tesSUCCESS") {
+                throw Error(tx.result.engine_result)
+            }
+            return tx.result.tx_json.hash;
+        }
+    })
+
 }
 async function signAndSendTransaction() {
-    // const { accounts, provider } = await connect();
-    // const recipient = prompt("Please enter a valid stellar destionation address: ", "MBNCH45OPXCOMZQSFG4M7WPOBG3DJAGKZH7AAICGSZTNDCO5XRVKAAAAAAAAOVVVWP3BM");
-    // const transaction = await createTransfer(accounts[0].address, recipient);
-    // const params = { transaction, account: accounts[0] };
-    // await utils.runMethod({
-    //     method: "stellar_sendTransaction",
-    //     asyncFunc: async function name() {
-    //         const { txId } = await provider.features["stellar:signAndSendTransaction"].signAndSendTransaction(params);
-    //         return txId;
-    //     }
-    // })
+    const { accounts, provider } = await connect();
+    const recipient = prompt("Please enter a valid XRP destionation address: ", "rp1HToegsb2QMBDkhpz6rdfaArfKCj7PK8");
+    let transaction = await createTransfer(accounts[0].address, recipient || "rp1HToegsb2QMBDkhpz6rdfaArfKCj7PK8");
+    const params = { transaction, account: accounts[0] };
+    await utils.runMethod({
+        method: "xrpl_signAndSendTransaction",
+        asyncFunc: async function name() {
+            const { txId } = await provider.features["xrpl:signAndSendTransaction"].signAndSendTransaction(params);
+            return txId;
+        }
+    })
 }
 async function disconnect() {
     const { provider } = await connect();
@@ -107,10 +129,12 @@ const onChain = {
         signMessage: signMessage,
         signTransaction: signTransaction,
         signAndSendTransaction: signAndSendTransaction,
+        signMintNftTransaction: signMintNftTransaction,
         requestAccounts: requestAccounts,
         disconnect: disconnect,
         listenOnNetworkChanges: listenOnNetworkChanges,
-        listenOnWalletChanges: listenOnWalletChanges
+        listenOnWalletChanges: listenOnWalletChanges,
+  
     }
 };
 

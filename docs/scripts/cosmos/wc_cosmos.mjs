@@ -7,7 +7,6 @@ const network = cosmos.cosmosTestnetProvider
 async function connect() {
     const { session, provider } = await wc.initWalletConnect(cosmos.cosmosCaip2, network);
     const accounts = wc.getApprovedAccounts({ session, caip10: network });
-    console.log("accounts: " + JSON.stringify(accounts));
     if (accounts.length === 0) {
         throw new Error(`No approved accounts found for network "${network} (Cosmos ics provider testnet)". Please connect an account in your wallet.`);
     }
@@ -102,7 +101,6 @@ async function signDirectTransaction() {
         method: "cosmos_signTransactionDirect",
         asyncFunc: async function name() {
             const tx = await createTransaction(directSigner, recipient);
-            console.log("sig: " + JSON.stringify(tx, (_, v) => typeof v === 'bigint' ? v.toString() : v))
             return tx.transactionHash;
         }
     })

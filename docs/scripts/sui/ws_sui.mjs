@@ -47,7 +47,6 @@ async function signAndExcuteTransaction() {
     const { accounts, provider } = await connect();
     const recipient = prompt("Please enter a valid sui destionation address: ", "0x4637f89fdf75bf020b2f00a5dedeb6a405728c6062d44ed9c816f5683dd0f72a");
     const transaction = await createTransfer(accounts[0].address, recipient);
-    console.log("tx created?!");
     const params = { transaction, account: accounts[0], chain: network };
     await utils.runMethod({
         method: "sui_signAndExecuteTransaction",

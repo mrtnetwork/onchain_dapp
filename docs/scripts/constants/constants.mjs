@@ -100,9 +100,9 @@ const bitcoinCaip2 = "bip122";
 const bchCaip2 = "bch";
 const bitcoinTestnet4Network = "bip122:00000000da84f2bafbbc53dee25a72ae"
 const bitcoinWsTestnet4Network = "bitcoin:testnet4"
-const bchTestnet = "bitcoincash:testnet"
+// const bchTestnet = "bitcoincash:testnet"
 const bchCaip2Testnet = "bch:bchtest"
-const btc = { bitcoinCaip2, bitcoinTestnet4Network, bitcoinWsTestnet4Network, bchTestnet, bchCaip2Testnet, bchCaip2 }
+const btc = { bitcoinCaip2, bitcoinTestnet4Network, bitcoinWsTestnet4Network,  bchCaip2Testnet, bchCaip2 }
 
 
 
@@ -116,12 +116,21 @@ const substrateCaip2 = "polkadot";
 const substrateWestendNetwork = "polkadot:67f9723393ef76214df0118c34bbbd3d"
 const substrateWsWestendNetwork = "polkadot:67f9723393ef76214df0118c34bbbd3d"
 const polkadot = { substrateCaip2, substrateWestendNetwork, substrateWsWestendNetwork }
-const xrplCaip2 = "xrpl";
-const xrplWsTestnetNetwork = "xrpl:1"
-
-const ripple = { xrplCaip2, xrplWsTestnetNetwork }
 
 
+const xrpCaip2 = "xrpl";
+const xrpWsTestnetNetwork = "xrpl:1"
+
+const xrp = { xrpCaip2, xrpWsTestnetNetwork }
 
 
-export { ethereum, tron, aptos, solana, sui, stellar, ton, btc, cosmos, polkadot, xrplCaip2, ripple };
+const moneroCaip2 = "monero";
+const moneroWsTestnetNetwork = "monero:76ee3cc98646292206cd3e86f74d88b4"
+const monero = { moneroCaip2, moneroWsTestnetNetwork }
+
+
+
+const cardanoCaip2 = "cip34";
+const cardanoWsPreprodNetwork = "cip34:0-1"
+const cardano = { cardanoCaip2, cardanoWsPreprodNetwork }
+export { ethereum, tron, aptos, solana, sui, stellar, ton, btc, cosmos, polkadot, xrp, monero, cardano };

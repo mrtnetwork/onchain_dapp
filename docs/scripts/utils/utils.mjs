@@ -10,13 +10,11 @@ function createCompleter() {
 async function runMethod({ method, asyncFunc, showAlert = true }) {
     try {
         const data = await asyncFunc();
-        console.log("request done!");
         const message = method + ": " + JSON.stringify(data);
-        console.log(message)
         if (showAlert) alert(message)
         return data;
     } catch (error) {
-        console.log("error: " + error);
+        console.log("error here: " + error);
         console.error('Error occurred: ' + method + " " + JSON.stringify(error));
         throw error;
     }
