@@ -1,18 +1,19 @@
 // webpack.config.js
 const path = require('path');
 const webpack = require('webpack');
-
+const isDev = process.env.NODE_ENV === 'development';
+console.log("id dev: "+isDev);
+/// 
 module.exports = {
     entry: './src/index.js', // Your main JavaScript file
     output: {
         path: path.resolve(__dirname, 'docs'),
-        publicPath: '/onchain_dapp/', 
+        publicPath: isDev ? "/" : '/onchain_dapp/',
         filename: 'bundle.js',
-        chunkFilename: '[name].bundle.js',
+        chunkFilename: 'js/chunks/[name].bundle.js',
     },
-    mode: 'production',
     optimization: {
-        minimize: false, // ⛔ disables minification
+        minimize:isDev?false: true // ⛔ disables minification
     },
     experiments: {
         asyncWebAssembly: true, // Enable support for .wasm files
@@ -44,12 +45,10 @@ module.exports = {
         new webpack.ProvidePlugin({
             Buffer: ['buffer', 'Buffer'],
         }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+          }),
     ],
     mode: 'development',
-    devtool: 'source-map',
-    // devServer: {
-    //     static: path.resolve(__dirname, 'docs'),
-    //     port: 8080,
-    //     open: true,
-    // },
+    devtool: 'source-map'
 };
