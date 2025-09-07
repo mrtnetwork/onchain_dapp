@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/index.js', // Your main JavaScript file
     output: {
         path: path.resolve(__dirname, 'docs'),
-        publicPath: './', 
+        publicPath: '/onchain_dapp/', 
         filename: 'bundle.js',
         chunkFilename: '[name].bundle.js',
         filename: '[name].bundle.js',
