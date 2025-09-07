@@ -12,8 +12,7 @@ module.exports = {
     },
     mode: 'production',
     optimization: {
-        splitChunks: false,
-        runtimeChunk: false, 
+        minimize: false, // ⛔ disables minification
     },
     experiments: {
         asyncWebAssembly: true, // Enable support for .wasm files
@@ -48,4 +47,9 @@ module.exports = {
     ],
     mode: 'development',
     devtool: 'source-map',
+    // devServer: {
+    //     static: path.resolve(__dirname, 'docs'),
+    //     port: 8080,
+    //     open: true,
+    // },
 };
