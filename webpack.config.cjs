@@ -9,7 +9,7 @@ module.exports = {
         publicPath: '/onchain_dapp/', 
         filename: 'bundle.js',
         chunkFilename: '[name].bundle.js',
-        filename: '[name].bundle.js',
+        filename: 'bundle.js',
         // assetModuleFilename: 'assets/[name][ext][query]'
     },
     mode: 'production',
