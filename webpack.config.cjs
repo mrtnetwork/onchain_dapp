@@ -6,11 +6,25 @@ module.exports = {
     entry: './src/index.js', // Your main JavaScript file
     output: {
         path: path.resolve(__dirname, 'docs'),
-        publicPath: '/onchain_dapp/', 
+        publicPath: './', 
         filename: 'bundle.js',
         chunkFilename: '[name].bundle.js',
         filename: '[name].bundle.js',
         // assetModuleFilename: 'assets/[name][ext][query]'
+    },
+    mode: 'production',
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: 'babel-loader',
+        },
+        {
+          test: /\.(png|jpe?g|gif|svg)$/i,
+          type: 'asset/resource',
+        },
+      ],
     },
     optimization: {
         minimize: false, // ⛔ disables minification
