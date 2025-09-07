@@ -7,3 +7,4 @@ public/webview.js
 public/webview.js
 public/webview_page.js
 *.zip
+.DS_Store

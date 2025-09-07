@@ -7,7 +7,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'docs'),
         publicPath: '/onchain_dapp/', 
-        filename: 'bundle.js', // Output bundled file
+        filename: 'bundle.js',
+        chunkFilename: '[name].bundle.js',
+        filename: '[name].bundle.js',
+        // assetModuleFilename: 'assets/[name][ext][query]'
     },
     optimization: {
         minimize: false, // ⛔ disables minification
