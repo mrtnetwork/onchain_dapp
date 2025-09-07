@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Instructions for sending Web3 transactions to the OnChain Wallet.",
   "main": "index.js",
+  "homepage": "https://mrtnetwork.github.io/onchain_dapp",
   "scripts": {
     "build": "webpack",
     "start": "node app.js",
