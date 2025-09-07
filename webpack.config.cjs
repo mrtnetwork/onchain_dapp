@@ -8,10 +8,12 @@ module.exports = {
         path: path.resolve(__dirname, 'docs'),
         publicPath: '/onchain_dapp/', 
         filename: 'bundle.js',
+        chunkFilename: '[name].bundle.js',
     },
     mode: 'production',
     optimization: {
-        minimize: false, // ⛔ disables minification
+        splitChunks: false,
+        runtimeChunk: false, 
     },
     experiments: {
         asyncWebAssembly: true, // Enable support for .wasm files
