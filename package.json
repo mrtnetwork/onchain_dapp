@@ -1,5 +1,5 @@
 {
-  "name": "OnChain DAPP Examples",
+  "name": "onchain_dapp_example",
   "version": "1.0.0",
   "description": "Instructions for sending Web3 transactions to the OnChain Wallet.",
   "main": "index.js",

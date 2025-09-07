@@ -8,7 +8,6 @@ module.exports = {
         path: path.resolve(__dirname, 'docs'),
         publicPath: '/onchain_dapp/', 
         filename: 'bundle.js',
-        chunkFilename: '[name].[contenthash].bundle.js',
     },
     mode: 'production',
     optimization: {
@@ -47,9 +46,4 @@ module.exports = {
     ],
     mode: 'development',
     devtool: 'source-map',
-    // devServer: {
-    //     static: path.resolve(__dirname, 'docs'),
-    //     port: 8080,
-    //     open: true,
-    // },
 };
