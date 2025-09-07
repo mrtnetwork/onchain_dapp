@@ -8,27 +8,12 @@ module.exports = {
         path: path.resolve(__dirname, 'docs'),
         publicPath: '/onchain_dapp/', 
         filename: 'bundle.js',
-        chunkFilename: '[name].bundle.js',
-        filename: 'bundle.js',
-        // assetModuleFilename: 'assets/[name][ext][query]'
+        chunkFilename: '[name].[contenthash].bundle.js',
     },
     mode: 'production',
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: 'babel-loader',
-        },
-        {
-          test: /\.(png|jpe?g|gif|svg)$/i,
-          type: 'asset/resource',
-        },
-      ],
-    },
     optimization: {
         minimize: false, // ⛔ disables minification
-      },
+    },
     experiments: {
         asyncWebAssembly: true, // Enable support for .wasm files
     },
