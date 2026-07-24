@@ -16,6 +16,7 @@ async function connect() {
 
 async function signMessage() {
     const { accounts, provider } = await connect();
+    console.log("accounts " + accounts[0])
     const params = {
         'message': 'Sign in test message.',
         'address': accounts[0]

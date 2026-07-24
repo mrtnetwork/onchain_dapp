@@ -1,58 +1,32 @@
-"use strict";(self.webpackChunkonchain_dapp_example=self.webpackChunkonchain_dapp_example||[]).push([[7309],{38913:(e,t,i)=>{var a=i(12618),n=i(25707),r=i(60031),o=(i(18409),i(26109)),l=i(43494);i(98848);const s=a.AH`
-  :host {
-    position: relative;
-    display: inline-block;
-  }
-
-  wui-text {
-    margin: var(--wui-spacing-xxs) var(--wui-spacing-m) var(--wui-spacing-0) var(--wui-spacing-m);
-  }
-`;var c=function(e,t,i,a){var n,r=arguments.length,o=r<3?t:null===a?a=Object.getOwnPropertyDescriptor(t,i):a;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,i,a);else for(var l=e.length-1;l>=0;l--)(n=e[l])&&(o=(r<3?n(o):r>3?n(t,i,o):n(t,i))||o);return r>3&&o&&Object.defineProperty(t,i,o),o};let p=class extends a.WF{constructor(){super(...arguments),this.disabled=!1}render(){return a.qy`
-      <wui-input-text
-        type="email"
-        placeholder="Email"
-        icon="mail"
-        size="mdl"
-        .disabled=${this.disabled}
-        .value=${this.value}
-        data-testid="wui-email-input"
-        tabIdx=${(0,r.J)(this.tabIdx)}
-      ></wui-input-text>
-      ${this.templateError()}
-    `}templateError(){return this.errorMessage?a.qy`<wui-text variant="tiny-500" color="error-100">${this.errorMessage}</wui-text>`:null}};p.styles=[o.W5,s],c([(0,n.MZ)()],p.prototype,"errorMessage",void 0),c([(0,n.MZ)({type:Boolean})],p.prototype,"disabled",void 0),c([(0,n.MZ)()],p.prototype,"value",void 0),c([(0,n.MZ)()],p.prototype,"tabIdx",void 0),p=c([(0,l.E)("wui-email-input")],p)},67309:(e,t,i)=>{i.r(t),i.d(t,{W3mEmailLoginView:()=>_,W3mEmailOtpWidget:()=>u.H,W3mEmailVerifyDeviceView:()=>E,W3mEmailVerifyOtpView:()=>h,W3mUpdateEmailPrimaryOtpView:()=>O,W3mUpdateEmailSecondaryOtpView:()=>C,W3mUpdateEmailWalletView:()=>I});var a=i(6056),n=i(31211),r=i(42733),o=i(90184),l=i(96396),s=i(78508),c=i(21871),p=i(26742),d=i(70148),u=i(22799);let h=class extends u.H{constructor(){super(...arguments),this.onOtpSubmit=async e=>{try{if(this.authConnector){const t=a.W.state.activeChain,i=n.x.getConnections(t),p=r.H.state.remoteFeatures?.multiWallet,d=i.length>0;if(await this.authConnector.provider.connectOtp({otp:e}),o.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_PASS"}),!t)throw new Error("Active chain is not set on ChainControll");if(await n.x.connectExternal(this.authConnector,t),o.E.sendEvent({type:"track",event:"CONNECT_SUCCESS",properties:{method:"email",name:this.authConnector.name||"Unknown"}}),r.H.state.remoteFeatures?.emailCapture)return;if(r.H.state.siwx)return void l.W.close();if(d&&p)return s.I.replace("ProfileWallets"),void c.P.showSuccess("New Wallet Added");l.W.close()}}catch(e){throw o.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_FAIL",properties:{message:p.w.parseError(e)}}),e}},this.onOtpResend=async e=>{this.authConnector&&(await this.authConnector.provider.connectEmail({email:e}),o.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_SENT"}))}}};h=function(e,t,i,a){var n,r=arguments.length,o=r<3?t:null===a?a=Object.getOwnPropertyDescriptor(t,i):a;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,i,a);else for(var l=e.length-1;l>=0;l--)(n=e[l])&&(o=(r<3?n(o):r>3?n(t,i,o):n(t,i))||o);return r>3&&o&&Object.defineProperty(t,i,o),o}([(0,d.EM)("w3m-email-verify-otp-view")],h);var w=i(12618),g=i(25707),m=i(36010);i(60310),i(77616),i(45101),i(45090);const v=w.AH`
+/*! For license information please see 7309.bundle.js.LICENSE.txt */
+"use strict";(self.webpackChunkonchain_dapp_example=self.webpackChunkonchain_dapp_example||[]).push([[7309],{67309(t,e,i){i.r(e),i.d(e,{W3mEmailLoginView:()=>_,W3mEmailOtpWidget:()=>p.H,W3mEmailVerifyDeviceView:()=>w,W3mEmailVerifyOtpView:()=>h,W3mUpdateEmailPrimaryOtpView:()=>k,W3mUpdateEmailSecondaryOtpView:()=>A,W3mUpdateEmailWalletView:()=>E});var o=i(6056),r=i(31211),n=i(57019),a=i(90184),s=i(96396),c=i(78508),l=i(21871),d=i(26742),u=i(70148),p=i(22799);let h=class extends p.H{constructor(){super(...arguments),this.onOtpSubmit=async t=>{try{if(this.authConnector){const e=o.W.state.activeChain,i=r.x.getConnections(e),d=n.H.state.remoteFeatures?.multiWallet,u=i.length>0;if(await this.authConnector.provider.connectOtp({otp:t}),a.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_PASS"}),!e)throw new Error("Active chain is not set on ChainController");if(await r.x.connectExternal(this.authConnector,e),n.H.state.remoteFeatures?.emailCapture)return;if(n.H.state.siwx)return void s.W.close();if(u&&d)return c.I.replace("ProfileWallets"),void l.P.showSuccess("New Wallet Added");s.W.close()}}catch(t){throw a.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_FAIL",properties:{message:d.w.parseError(t)}}),t}},this.onOtpResend=async t=>{this.authConnector&&(await this.authConnector.provider.connectEmail({email:t}),a.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_SENT"}))}}};h=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a}([(0,u.EM)("w3m-email-verify-otp-view")],h);var m=i(12618),g=i(25707),b=i(36010);i(60310),i(77616),i(45101),i(45090);const f=u.AH`
   wui-icon-box {
-    height: var(--wui-icon-box-size-xl);
-    width: var(--wui-icon-box-size-xl);
+    height: ${({spacing:t})=>t[16]};
+    width: ${({spacing:t})=>t[16]};
   }
-`;var f=function(e,t,i,a){var n,r=arguments.length,o=r<3?t:null===a?a=Object.getOwnPropertyDescriptor(t,i):a;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,i,a);else for(var l=e.length-1;l>=0;l--)(n=e[l])&&(o=(r<3?n(o):r>3?n(t,i,o):n(t,i))||o);return r>3&&o&&Object.defineProperty(t,i,o),o};let E=class extends w.WF{constructor(){super(),this.email=s.I.state.data?.email,this.authConnector=m.a.getAuthConnector(),this.loading=!1,this.listenForDeviceApproval()}render(){if(!this.email)throw new Error("w3m-email-verify-device-view: No email provided");if(!this.authConnector)throw new Error("w3m-email-verify-device-view: No auth connector provided");return w.qy`
+`;var v=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a};let w=class extends m.WF{constructor(){super(),this.email=c.I.state.data?.email,this.authConnector=b.a.getAuthConnector(),this.loading=!1,this.listenForDeviceApproval()}render(){if(!this.email)throw new Error("w3m-email-verify-device-view: No email provided");if(!this.authConnector)throw new Error("w3m-email-verify-device-view: No auth connector provided");return m.qy`
       <wui-flex
         flexDirection="column"
         alignItems="center"
-        .padding=${["xxl","s","xxl","s"]}
-        gap="l"
+        .padding=${["6","3","6","3"]}
+        gap="4"
       >
-        <wui-icon-box
-          size="xl"
-          iconcolor="accent-100"
-          backgroundcolor="accent-100"
-          icon="verify"
-          background="opaque"
-        ></wui-icon-box>
+        <wui-icon-box size="xl" color="accent-primary" icon="sealCheck"></wui-icon-box>
 
-        <wui-flex flexDirection="column" alignItems="center" gap="s">
+        <wui-flex flexDirection="column" alignItems="center" gap="3">
           <wui-flex flexDirection="column" alignItems="center">
-            <wui-text variant="paragraph-400" color="fg-100">
+            <wui-text variant="md-regular" color="primary">
               Approve the login link we sent to
             </wui-text>
-            <wui-text variant="paragraph-400" color="fg-100"><b>${this.email}</b></wui-text>
+            <wui-text variant="md-regular" color="primary"><b>${this.email}</b></wui-text>
           </wui-flex>
 
-          <wui-text variant="small-400" color="fg-200" align="center">
+          <wui-text variant="sm-regular" color="secondary" align="center">
             The code expires in 20 minutes
           </wui-text>
 
-          <wui-flex alignItems="center" id="w3m-resend-section" gap="xs">
-            <wui-text variant="small-400" color="fg-100" align="center">
+          <wui-flex alignItems="center" id="w3m-resend-section" gap="2">
+            <wui-text variant="sm-regular" color="primary" align="center">
               Didn't receive it?
             </wui-text>
             <wui-link @click=${this.onResendCode.bind(this)} .disabled=${this.loading}>
@@ -61,7 +35,7 @@
           </wui-flex>
         </wui-flex>
       </wui-flex>
-    `}async listenForDeviceApproval(){if(this.authConnector)try{await this.authConnector.provider.connectDevice(),o.E.sendEvent({type:"track",event:"DEVICE_REGISTERED_FOR_EMAIL"}),o.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_SENT"}),s.I.replace("EmailVerifyOtp",{email:this.email})}catch(e){s.I.goBack()}}async onResendCode(){try{if(!this.loading){if(!this.authConnector||!this.email)throw new Error("w3m-email-login-widget: Unable to resend email");this.loading=!0,await this.authConnector.provider.connectEmail({email:this.email}),this.listenForDeviceApproval(),c.P.showSuccess("Code email resent")}}catch(e){c.P.showError(e)}finally{this.loading=!1}}};E.styles=v,f([(0,g.wk)()],E.prototype,"loading",void 0),E=f([(0,d.EM)("w3m-email-verify-device-view")],E);var y=i(7610);i(58461),i(38913);const b=w.AH`
+    `}async listenForDeviceApproval(){if(this.authConnector)try{await this.authConnector.provider.connectDevice(),a.E.sendEvent({type:"track",event:"DEVICE_REGISTERED_FOR_EMAIL"}),a.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_SENT"}),c.I.replace("EmailVerifyOtp",{email:this.email})}catch(t){c.I.goBack()}}async onResendCode(){try{if(!this.loading){if(!this.authConnector||!this.email)throw new Error("w3m-email-login-widget: Unable to resend email");this.loading=!0,await this.authConnector.provider.connectEmail({email:this.email}),this.listenForDeviceApproval(),l.P.showSuccess("Code email resent")}}catch(t){l.P.showError(t)}finally{this.loading=!1}}};w.styles=f,v([(0,g.wk)()],w.prototype,"loading",void 0),w=v([(0,u.EM)("w3m-email-verify-device-view")],w);var y=i(68342);i(58461),i(38913);const $=m.AH`
   wui-email-input {
     width: 100%;
   }
@@ -71,8 +45,8 @@
     display: block;
     position: relative;
   }
-`;var x=function(e,t,i,a){var n,r=arguments.length,o=r<3?t:null===a?a=Object.getOwnPropertyDescriptor(t,i):a;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,i,a);else for(var l=e.length-1;l>=0;l--)(n=e[l])&&(o=(r<3?n(o):r>3?n(t,i,o):n(t,i))||o);return r>3&&o&&Object.defineProperty(t,i,o),o};let I=class extends w.WF{constructor(){super(...arguments),this.formRef=(0,y._)(),this.initialEmail=s.I.state.data?.email??"",this.redirectView=s.I.state.data?.redirectView,this.email="",this.loading=!1}firstUpdated(){this.formRef.value?.addEventListener("keydown",e=>{"Enter"===e.key&&this.onSubmitEmail(e)})}render(){return w.qy`
-      <wui-flex flexDirection="column" padding="m" gap="m">
+`;var x=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a};let E=class extends m.WF{constructor(){super(...arguments),this.formRef=(0,y._)(),this.initialEmail=c.I.state.data?.email??"",this.redirectView=c.I.state.data?.redirectView,this.email="",this.loading=!1}firstUpdated(){this.formRef.value?.addEventListener("keydown",t=>{"Enter"===t.key&&this.onSubmitEmail(t)})}render(){return m.qy`
+      <wui-flex flexDirection="column" padding="4" gap="4">
         <form ${(0,y.K)(this.formRef)} @submit=${this.onSubmitEmail.bind(this)}>
           <wui-email-input
             value=${this.initialEmail}
@@ -84,241 +58,437 @@
         </form>
         ${this.buttonsTemplate()}
       </wui-flex>
-    `}onEmailInputChange(e){this.email=e.detail}async onSubmitEmail(e){try{if(this.loading)return;this.loading=!0,e.preventDefault();const t=m.a.getAuthConnector();if(!t)throw new Error("w3m-update-email-wallet: Auth connector not found");const i=await t.provider.updateEmail({email:this.email});o.E.sendEvent({type:"track",event:"EMAIL_EDIT"}),"VERIFY_SECONDARY_OTP"===i.action?s.I.push("UpdateEmailSecondaryOtp",{email:this.initialEmail,newEmail:this.email,redirectView:this.redirectView}):s.I.push("UpdateEmailPrimaryOtp",{email:this.initialEmail,newEmail:this.email,redirectView:this.redirectView})}catch(e){c.P.showError(e),this.loading=!1}}buttonsTemplate(){const e=!this.loading&&this.email.length>3&&this.email!==this.initialEmail;return this.redirectView?w.qy`
-      <wui-flex gap="s">
-        <wui-button size="md" variant="neutral" fullWidth @click=${s.I.goBack}>
+    `}onEmailInputChange(t){this.email=t.detail}async onSubmitEmail(t){try{if(this.loading)return;this.loading=!0,t.preventDefault();const e=b.a.getAuthConnector();if(!e)throw new Error("w3m-update-email-wallet: Auth connector not found");const i=await e.provider.updateEmail({email:this.email});a.E.sendEvent({type:"track",event:"EMAIL_EDIT"}),"VERIFY_SECONDARY_OTP"===i.action?c.I.push("UpdateEmailSecondaryOtp",{email:this.initialEmail,newEmail:this.email,redirectView:this.redirectView}):c.I.push("UpdateEmailPrimaryOtp",{email:this.initialEmail,newEmail:this.email,redirectView:this.redirectView})}catch(t){l.P.showError(t),this.loading=!1}}buttonsTemplate(){const t=!this.loading&&this.email.length>3&&this.email!==this.initialEmail;return this.redirectView?m.qy`
+      <wui-flex gap="3">
+        <wui-button size="md" variant="neutral" fullWidth @click=${c.I.goBack}>
           Cancel
         </wui-button>
 
         <wui-button
           size="md"
-          variant="main"
+          variant="accent-primary"
           fullWidth
           @click=${this.onSubmitEmail.bind(this)}
-          .disabled=${!e}
+          .disabled=${!t}
           .loading=${this.loading}
         >
           Save
         </wui-button>
       </wui-flex>
-    `:w.qy`
+    `:m.qy`
         <wui-button
           size="md"
-          variant="main"
+          variant="accent-primary"
           fullWidth
           @click=${this.onSubmitEmail.bind(this)}
-          .disabled=${!e}
+          .disabled=${!t}
           .loading=${this.loading}
         >
           Save
         </wui-button>
-      `}};I.styles=b,x([(0,g.wk)()],I.prototype,"email",void 0),x([(0,g.wk)()],I.prototype,"loading",void 0),I=x([(0,d.EM)("w3m-update-email-wallet-view")],I);let O=class extends u.H{constructor(){super(),this.email=s.I.state.data?.email,this.onOtpSubmit=async e=>{try{this.authConnector&&(await this.authConnector.provider.updateEmailPrimaryOtp({otp:e}),o.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_PASS"}),s.I.replace("UpdateEmailSecondaryOtp",s.I.state.data))}catch(e){throw o.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_FAIL",properties:{message:p.w.parseError(e)}}),e}},this.onStartOver=()=>{s.I.replace("UpdateEmailWallet",s.I.state.data)}}};O=function(e,t,i,a){var n,r=arguments.length,o=r<3?t:null===a?a=Object.getOwnPropertyDescriptor(t,i):a;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,i,a);else for(var l=e.length-1;l>=0;l--)(n=e[l])&&(o=(r<3?n(o):r>3?n(t,i,o):n(t,i))||o);return r>3&&o&&Object.defineProperty(t,i,o),o}([(0,d.EM)("w3m-update-email-primary-otp-view")],O);let C=class extends u.H{constructor(){super(),this.email=s.I.state.data?.newEmail,this.redirectView=s.I.state.data?.redirectView,this.onOtpSubmit=async e=>{try{this.authConnector&&(await this.authConnector.provider.updateEmailSecondaryOtp({otp:e}),o.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_PASS"}),this.redirectView&&s.I.reset(this.redirectView))}catch(e){throw o.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_FAIL",properties:{message:p.w.parseError(e)}}),e}},this.onStartOver=()=>{s.I.replace("UpdateEmailWallet",s.I.state.data)}}};C=function(e,t,i,a){var n,r=arguments.length,o=r<3?t:null===a?a=Object.getOwnPropertyDescriptor(t,i):a;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,i,a);else for(var l=e.length-1;l>=0;l--)(n=e[l])&&(o=(r<3?n(o):r>3?n(t,i,o):n(t,i))||o);return r>3&&o&&Object.defineProperty(t,i,o),o}([(0,d.EM)("w3m-update-email-secondary-otp-view")],C);var R=i(24376),k=i(69510),A=function(e,t,i,a){var n,r=arguments.length,o=r<3?t:null===a?a=Object.getOwnPropertyDescriptor(t,i):a;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,i,a);else for(var l=e.length-1;l>=0;l--)(n=e[l])&&(o=(r<3?n(o):r>3?n(t,i,o):n(t,i))||o);return r>3&&o&&Object.defineProperty(t,i,o),o};let _=class extends w.WF{constructor(){super(),this.authConnector=m.a.getAuthConnector(),this.isEmailEnabled=r.H.state.remoteFeatures?.email,this.isAuthEnabled=this.checkIfAuthEnabled(m.a.state.connectors),this.connectors=m.a.state.connectors,m.a.subscribeKey("connectors",e=>{this.connectors=e,this.isAuthEnabled=this.checkIfAuthEnabled(this.connectors)})}render(){if(!this.isEmailEnabled)throw new Error("w3m-email-login-view: Email is not enabled");if(!this.isAuthEnabled)throw new Error("w3m-email-login-view: No auth connector provided");return w.qy`<wui-flex
-      flexDirection="column"
-      .padding=${["3xs","m","m","m"]}
-      gap="l"
-    >
+      `}};E.styles=$,x([(0,g.wk)()],E.prototype,"email",void 0),x([(0,g.wk)()],E.prototype,"loading",void 0),E=x([(0,u.EM)("w3m-update-email-wallet-view")],E);let k=class extends p.H{constructor(){super(),this.email=c.I.state.data?.email,this.onOtpSubmit=async t=>{try{this.authConnector&&(await this.authConnector.provider.updateEmailPrimaryOtp({otp:t}),a.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_PASS"}),c.I.replace("UpdateEmailSecondaryOtp",c.I.state.data))}catch(t){throw a.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_FAIL",properties:{message:d.w.parseError(t)}}),t}},this.onStartOver=()=>{c.I.replace("UpdateEmailWallet",c.I.state.data)}}};k=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a}([(0,u.EM)("w3m-update-email-primary-otp-view")],k);let A=class extends p.H{constructor(){super(),this.email=c.I.state.data?.newEmail,this.redirectView=c.I.state.data?.redirectView,this.onOtpSubmit=async t=>{try{this.authConnector&&(await this.authConnector.provider.updateEmailSecondaryOtp({otp:t}),a.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_PASS"}),this.redirectView&&c.I.reset(this.redirectView))}catch(t){throw a.E.sendEvent({type:"track",event:"EMAIL_VERIFICATION_CODE_FAIL",properties:{message:d.w.parseError(t)}}),t}},this.onStartOver=()=>{c.I.replace("UpdateEmailWallet",c.I.state.data)}}};A=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a}([(0,u.EM)("w3m-update-email-secondary-otp-view")],A);var I=i(24376),O=i(69510),C=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a};let _=class extends m.WF{constructor(){super(),this.authConnector=b.a.getAuthConnector(),this.isEmailEnabled=n.H.state.remoteFeatures?.email,this.isAuthEnabled=this.checkIfAuthEnabled(b.a.state.connectors),this.connectors=b.a.state.connectors,b.a.subscribeKey("connectors",t=>{this.connectors=t,this.isAuthEnabled=this.checkIfAuthEnabled(this.connectors)})}render(){if(!this.isEmailEnabled)throw new Error("w3m-email-login-view: Email is not enabled");if(!this.isAuthEnabled)throw new Error("w3m-email-login-view: No auth connector provided");return m.qy`<wui-flex flexDirection="column" .padding=${["1","3","3","3"]} gap="4">
       <w3m-email-login-widget></w3m-email-login-widget>
-    </wui-flex> `}checkIfAuthEnabled(e){const t=e.filter(e=>e.type===k.o.CONNECTOR_TYPE_AUTH).map(e=>e.chain);return R.o.AUTH_CONNECTOR_SUPPORTED_CHAINS.some(e=>t.includes(e))}};A([(0,g.wk)()],_.prototype,"connectors",void 0),_=A([(0,d.EM)("w3m-email-login-view")],_)},77616:(e,t,i)=>{i(12851)},98848:(e,t,i)=>{var a=i(12618),n=i(25707),r=i(53720),o=i(60031),l=i(7610),s=(i(2132),i(26109)),c=i(43494);const p=a.AH`
+    </wui-flex> `}checkIfAuthEnabled(t){const e=t.filter(t=>t.type===O.o.CONNECTOR_TYPE_AUTH).map(t=>t.chain);return I.o.AUTH_CONNECTOR_SUPPORTED_CHAINS.some(t=>e.includes(t))}};C([(0,g.wk)()],_.prototype,"connectors",void 0),_=C([(0,u.EM)("w3m-email-login-view")],_)},58461(t,e,i){i(19384)},38913(t,e,i){var o=i(12618),r=i(25707),n=i(60031),a=(i(10052),i(18409),i(26109)),s=i(43494);i(98848);const c=o.AH`
+  :host {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+`;var l=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a};let d=class extends o.WF{constructor(){super(...arguments),this.disabled=!1}render(){return o.qy`
+      <wui-input-text
+        type="email"
+        placeholder="Email"
+        icon="mail"
+        size="lg"
+        .disabled=${this.disabled}
+        .value=${this.value}
+        data-testid="wui-email-input"
+        tabIdx=${(0,n.J)(this.tabIdx)}
+      ></wui-input-text>
+      ${this.templateError()}
+    `}templateError(){return this.errorMessage?o.qy`<wui-text variant="sm-regular" color="error">${this.errorMessage}</wui-text>`:null}};d.styles=[a.W5,c],l([(0,r.MZ)()],d.prototype,"errorMessage",void 0),l([(0,r.MZ)({type:Boolean})],d.prototype,"disabled",void 0),l([(0,r.MZ)()],d.prototype,"value",void 0),l([(0,r.MZ)()],d.prototype,"tabIdx",void 0),d=l([(0,s.E)("wui-email-input")],d)},77616(t,e,i){i(12851)},19384(t,e,i){var o=i(12618),r=i(25707),n=(i(10052),i(20880),i(18409),i(26109)),a=i(43494);const s=i(67569).AH`
+  :host {
+    width: var(--local-width);
+  }
+
+  button {
+    width: var(--local-width);
+    white-space: nowrap;
+    column-gap: ${({spacing:t})=>t[2]};
+    transition:
+      scale ${({durations:t})=>t.lg} ${({easings:t})=>t["ease-out-power-1"]},
+      background-color ${({durations:t})=>t.lg}
+        ${({easings:t})=>t["ease-out-power-2"]},
+      border-radius ${({durations:t})=>t.lg}
+        ${({easings:t})=>t["ease-out-power-1"]};
+    will-change: scale, background-color, border-radius;
+    cursor: pointer;
+  }
+
+  /* -- Sizes --------------------------------------------------- */
+  button[data-size='sm'] {
+    border-radius: ${({borderRadius:t})=>t[2]};
+    padding: 0 ${({spacing:t})=>t[2]};
+    height: 28px;
+  }
+
+  button[data-size='md'] {
+    border-radius: ${({borderRadius:t})=>t[3]};
+    padding: 0 ${({spacing:t})=>t[4]};
+    height: 38px;
+  }
+
+  button[data-size='lg'] {
+    border-radius: ${({borderRadius:t})=>t[4]};
+    padding: 0 ${({spacing:t})=>t[5]};
+    height: 48px;
+  }
+
+  /* -- Variants --------------------------------------------------------- */
+  button[data-variant='accent-primary'] {
+    background-color: ${({tokens:t})=>t.core.backgroundAccentPrimary};
+    color: ${({tokens:t})=>t.theme.textInvert};
+  }
+
+  button[data-variant='accent-secondary'] {
+    background-color: ${({tokens:t})=>t.core.foregroundAccent010};
+    color: ${({tokens:t})=>t.core.textAccentPrimary};
+  }
+
+  button[data-variant='neutral-primary'] {
+    background-color: ${({tokens:t})=>t.theme.backgroundInvert};
+    color: ${({tokens:t})=>t.theme.textInvert};
+  }
+
+  button[data-variant='neutral-secondary'] {
+    background-color: transparent;
+    border: 1px solid ${({tokens:t})=>t.theme.borderSecondary};
+    color: ${({tokens:t})=>t.theme.textPrimary};
+  }
+
+  button[data-variant='neutral-tertiary'] {
+    background-color: ${({tokens:t})=>t.theme.foregroundPrimary};
+    color: ${({tokens:t})=>t.theme.textPrimary};
+  }
+
+  button[data-variant='error-primary'] {
+    background-color: ${({tokens:t})=>t.core.textError};
+    color: ${({tokens:t})=>t.theme.textInvert};
+  }
+
+  button[data-variant='error-secondary'] {
+    background-color: ${({tokens:t})=>t.core.backgroundError};
+    color: ${({tokens:t})=>t.core.textError};
+  }
+
+  button[data-variant='shade'] {
+    background: var(--wui-color-gray-glass-002);
+    color: var(--wui-color-fg-200);
+    border: none;
+    box-shadow: inset 0 0 0 1px var(--wui-color-gray-glass-005);
+  }
+
+  /* -- Focus states --------------------------------------------------- */
+  button[data-size='sm']:focus-visible:enabled {
+    border-radius: 28px;
+  }
+
+  button[data-size='md']:focus-visible:enabled {
+    border-radius: 38px;
+  }
+
+  button[data-size='lg']:focus-visible:enabled {
+    border-radius: 48px;
+  }
+  button[data-variant='shade']:focus-visible:enabled {
+    background: var(--wui-color-gray-glass-005);
+    box-shadow:
+      inset 0 0 0 1px var(--wui-color-gray-glass-010),
+      0 0 0 4px var(--wui-color-gray-glass-002);
+  }
+
+  /* -- Hover & Active states ----------------------------------------------------------- */
+  @media (hover: hover) {
+    button[data-size='sm']:hover:enabled {
+      border-radius: 28px;
+    }
+
+    button[data-size='md']:hover:enabled {
+      border-radius: 38px;
+    }
+
+    button[data-size='lg']:hover:enabled {
+      border-radius: 48px;
+    }
+
+    button[data-variant='shade']:hover:enabled {
+      background: var(--wui-color-gray-glass-002);
+    }
+
+    button[data-variant='shade']:active:enabled {
+      background: var(--wui-color-gray-glass-005);
+    }
+  }
+
+  button[data-size='sm']:active:enabled {
+    border-radius: 28px;
+  }
+
+  button[data-size='md']:active:enabled {
+    border-radius: 38px;
+  }
+
+  button[data-size='lg']:active:enabled {
+    border-radius: 48px;
+  }
+
+  /* -- Disabled states --------------------------------------------------- */
+  button:disabled {
+    opacity: 0.3;
+  }
+`;var c=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a};const l={lg:"lg-regular-mono",md:"md-regular-mono",sm:"sm-regular-mono"},d={lg:"md",md:"md",sm:"sm"};let u=class extends o.WF{constructor(){super(...arguments),this.size="lg",this.disabled=!1,this.fullWidth=!1,this.loading=!1,this.variant="accent-primary"}render(){this.style.cssText=`\n    --local-width: ${this.fullWidth?"100%":"auto"};\n     `;const t=this.textVariant??l[this.size];return o.qy`
+      <button data-variant=${this.variant} data-size=${this.size} ?disabled=${this.disabled}>
+        ${this.loadingTemplate()}
+        <slot name="iconLeft"></slot>
+        <wui-text variant=${t} color="inherit">
+          <slot></slot>
+        </wui-text>
+        <slot name="iconRight"></slot>
+      </button>
+    `}loadingTemplate(){if(this.loading){const t=d[this.size],e="neutral-primary"===this.variant||"accent-primary"===this.variant?"invert":"primary";return o.qy`<wui-loading-spinner color=${e} size=${t}></wui-loading-spinner>`}return null}};u.styles=[n.W5,n.fD,s],c([(0,r.MZ)()],u.prototype,"size",void 0),c([(0,r.MZ)({type:Boolean})],u.prototype,"disabled",void 0),c([(0,r.MZ)({type:Boolean})],u.prototype,"fullWidth",void 0),c([(0,r.MZ)({type:Boolean})],u.prototype,"loading",void 0),c([(0,r.MZ)()],u.prototype,"variant",void 0),c([(0,r.MZ)()],u.prototype,"textVariant",void 0),u=c([(0,a.E)("wui-button")],u)},12851(t,e,i){var o=i(12618),r=i(25707),n=i(60031),a=(i(10052),i(26109)),s=i(43494);const c=i(67569).AH`
+  :host {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: ${({borderRadius:t})=>t[2]};
+    padding: ${({spacing:t})=>t[1]} !important;
+    background-color: ${({tokens:t})=>t.theme.backgroundPrimary};
+    position: relative;
+  }
+
+  :host([data-padding='2']) {
+    padding: ${({spacing:t})=>t[2]} !important;
+  }
+
+  :host:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: ${({borderRadius:t})=>t[2]};
+  }
+
+  :host > wui-icon {
+    z-index: 10;
+  }
+
+  /* -- Colors --------------------------------------------------- */
+  :host([data-color='accent-primary']) {
+    color: ${({tokens:t})=>t.core.iconAccentPrimary};
+  }
+
+  :host([data-color='accent-primary']):after {
+    background-color: ${({tokens:t})=>t.core.foregroundAccent010};
+  }
+
+  :host([data-color='default']),
+  :host([data-color='secondary']) {
+    color: ${({tokens:t})=>t.theme.iconDefault};
+  }
+
+  :host([data-color='default']):after {
+    background-color: ${({tokens:t})=>t.theme.foregroundPrimary};
+  }
+
+  :host([data-color='secondary']):after {
+    background-color: ${({tokens:t})=>t.theme.foregroundSecondary};
+  }
+
+  :host([data-color='success']) {
+    color: ${({tokens:t})=>t.core.iconSuccess};
+  }
+
+  :host([data-color='success']):after {
+    background-color: ${({tokens:t})=>t.core.backgroundSuccess};
+  }
+
+  :host([data-color='error']) {
+    color: ${({tokens:t})=>t.core.iconError};
+  }
+
+  :host([data-color='error']):after {
+    background-color: ${({tokens:t})=>t.core.backgroundError};
+  }
+
+  :host([data-color='warning']) {
+    color: ${({tokens:t})=>t.core.iconWarning};
+  }
+
+  :host([data-color='warning']):after {
+    background-color: ${({tokens:t})=>t.core.backgroundWarning};
+  }
+
+  :host([data-color='inverse']) {
+    color: ${({tokens:t})=>t.theme.iconInverse};
+  }
+
+  :host([data-color='inverse']):after {
+    background-color: transparent;
+  }
+`;var l=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a};let d=class extends o.WF{constructor(){super(...arguments),this.icon="copy",this.size="md",this.padding="1",this.color="default"}render(){return this.dataset.padding=this.padding,this.dataset.color=this.color,o.qy`
+      <wui-icon size=${(0,n.J)(this.size)} name=${this.icon} color="inherit"></wui-icon>
+    `}};d.styles=[a.W5,a.fD,c],l([(0,r.MZ)()],d.prototype,"icon",void 0),l([(0,r.MZ)()],d.prototype,"size",void 0),l([(0,r.MZ)()],d.prototype,"padding",void 0),l([(0,r.MZ)()],d.prototype,"color",void 0),d=l([(0,s.E)("wui-icon-box")],d)},98848(t,e,i){var o=i(12618),r=i(25707),n=i(60031),a=i(68342),s=(i(10052),i(18409),i(26109)),c=i(43494);const l=i(67569).AH`
   :host {
     position: relative;
     width: 100%;
-    display: inline-block;
-    color: var(--wui-color-fg-275);
+    display: inline-flex;
+    flex-direction: column;
+    gap: ${({spacing:t})=>t[3]};
+    color: ${({tokens:t})=>t.theme.textPrimary};
+    caret-color: ${({tokens:t})=>t.core.textAccentPrimary};
+  }
+
+  .wui-input-text-container {
+    position: relative;
+    display: flex;
   }
 
   input {
     width: 100%;
-    border-radius: var(--wui-border-radius-xs);
-    box-shadow: inset 0 0 0 1px var(--wui-color-gray-glass-002);
-    background: var(--wui-color-gray-glass-002);
-    font-size: var(--wui-font-size-paragraph);
-    letter-spacing: var(--wui-letter-spacing-paragraph);
-    color: var(--wui-color-fg-100);
-    transition:
-      background-color var(--wui-ease-inout-power-1) var(--wui-duration-md),
-      border-color var(--wui-ease-inout-power-1) var(--wui-duration-md),
-      box-shadow var(--wui-ease-inout-power-1) var(--wui-duration-md);
-    will-change: background-color, border-color, box-shadow;
-    caret-color: var(--wui-color-accent-100);
+    border-radius: ${({borderRadius:t})=>t[4]};
+    color: inherit;
+    background: transparent;
+    border: 1px solid ${({tokens:t})=>t.theme.borderPrimary};
+    caret-color: ${({tokens:t})=>t.core.textAccentPrimary};
+    padding: ${({spacing:t})=>t[3]} ${({spacing:t})=>t[3]}
+      ${({spacing:t})=>t[3]} ${({spacing:t})=>t[10]};
+    font-size: ${({textSize:t})=>t.large};
+    line-height: ${({typography:t})=>t["lg-regular"].lineHeight};
+    letter-spacing: ${({typography:t})=>t["lg-regular"].letterSpacing};
+    font-weight: ${({fontWeight:t})=>t.regular};
+    font-family: ${({fontFamily:t})=>t.regular};
+  }
+
+  input[data-size='lg'] {
+    padding: ${({spacing:t})=>t[4]} ${({spacing:t})=>t[3]}
+      ${({spacing:t})=>t[4]} ${({spacing:t})=>t[10]};
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    input:hover:enabled {
+      border: 1px solid ${({tokens:t})=>t.theme.borderSecondary};
+    }
   }
 
   input:disabled {
-    cursor: not-allowed;
-    border: 1px solid var(--wui-color-gray-glass-010);
-  }
-
-  input:disabled::placeholder,
-  input:disabled + wui-icon {
-    color: var(--wui-color-fg-300);
+    cursor: unset;
+    border: 1px solid ${({tokens:t})=>t.theme.borderPrimary};
   }
 
   input::placeholder {
-    color: var(--wui-color-fg-275);
+    color: ${({tokens:t})=>t.theme.textSecondary};
   }
 
   input:focus:enabled {
-    background-color: var(--wui-color-gray-glass-005);
-    -webkit-box-shadow:
-      inset 0 0 0 1px var(--wui-color-accent-100),
-      0px 0px 0px 4px var(--wui-box-shadow-blue);
-    -moz-box-shadow:
-      inset 0 0 0 1px var(--wui-color-accent-100),
-      0px 0px 0px 4px var(--wui-box-shadow-blue);
-    box-shadow:
-      inset 0 0 0 1px var(--wui-color-accent-100),
-      0px 0px 0px 4px var(--wui-box-shadow-blue);
+    border: 1px solid ${({tokens:t})=>t.theme.borderSecondary};
+    background-color: ${({tokens:t})=>t.theme.foregroundPrimary};
+    -webkit-box-shadow: 0px 0px 0px 4px ${({tokens:t})=>t.core.foregroundAccent040};
+    -moz-box-shadow: 0px 0px 0px 4px ${({tokens:t})=>t.core.foregroundAccent040};
+    box-shadow: 0px 0px 0px 4px ${({tokens:t})=>t.core.foregroundAccent040};
   }
 
-  input:hover:enabled {
-    background-color: var(--wui-color-gray-glass-005);
+  div.wui-input-text-container:has(input:disabled) {
+    opacity: 0.5;
   }
 
-  wui-icon {
+  wui-icon.wui-input-text-left-icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+    left: ${({spacing:t})=>t[4]};
+    color: ${({tokens:t})=>t.theme.iconDefault};
   }
 
-  .wui-size-sm {
-    padding: 9px var(--wui-spacing-m) 10px var(--wui-spacing-s);
+  button.wui-input-text-submit-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: ${({spacing:t})=>t[3]};
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    border-radius: ${({borderRadius:t})=>t[2]};
+    color: ${({tokens:t})=>t.core.textAccentPrimary};
   }
 
-  wui-icon + .wui-size-sm {
-    padding: 9px var(--wui-spacing-m) 10px 36px;
+  button.wui-input-text-submit-button:disabled {
+    opacity: 1;
   }
 
-  wui-icon[data-input='sm'] {
-    left: var(--wui-spacing-s);
+  button.wui-input-text-submit-button.loading wui-icon {
+    animation: spin 1s linear infinite;
   }
 
-  .wui-size-md {
-    padding: 15px var(--wui-spacing-m) var(--wui-spacing-l) var(--wui-spacing-m);
+  button.wui-input-text-submit-button:hover {
+    background: ${({tokens:t})=>t.core.foregroundAccent010};
   }
 
-  wui-icon + .wui-size-md,
-  wui-loading-spinner + .wui-size-md {
-    padding: 10.5px var(--wui-spacing-3xl) 10.5px var(--wui-spacing-3xl);
-  }
-
-  wui-icon[data-input='md'] {
-    left: var(--wui-spacing-l);
-  }
-
-  .wui-size-lg {
-    padding: var(--wui-spacing-s) var(--wui-spacing-s) var(--wui-spacing-s) var(--wui-spacing-l);
-    letter-spacing: var(--wui-letter-spacing-medium-title);
-    font-size: var(--wui-font-size-medium-title);
-    font-weight: var(--wui-font-weight-light);
-    line-height: 130%;
-    color: var(--wui-color-fg-100);
-    height: 64px;
-  }
-
-  .wui-padding-right-xs {
-    padding-right: var(--wui-spacing-xs);
-  }
-
-  .wui-padding-right-s {
-    padding-right: var(--wui-spacing-s);
-  }
-
-  .wui-padding-right-m {
-    padding-right: var(--wui-spacing-m);
-  }
-
-  .wui-padding-right-l {
-    padding-right: var(--wui-spacing-l);
-  }
-
-  .wui-padding-right-xl {
-    padding-right: var(--wui-spacing-xl);
-  }
-
-  .wui-padding-right-2xl {
-    padding-right: var(--wui-spacing-2xl);
-  }
-
-  .wui-padding-right-3xl {
-    padding-right: var(--wui-spacing-3xl);
-  }
-
-  .wui-padding-right-4xl {
-    padding-right: var(--wui-spacing-4xl);
-  }
-
-  .wui-padding-right-5xl {
-    padding-right: var(--wui-spacing-5xl);
-  }
-
-  wui-icon + .wui-size-lg,
-  wui-loading-spinner + .wui-size-lg {
-    padding-left: 50px;
-  }
-
-  wui-icon[data-input='lg'] {
-    left: var(--wui-spacing-l);
-  }
-
-  .wui-size-mdl {
-    padding: 17.25px var(--wui-spacing-m) 17.25px var(--wui-spacing-m);
-  }
-  wui-icon + .wui-size-mdl,
-  wui-loading-spinner + .wui-size-mdl {
-    padding: 17.25px var(--wui-spacing-3xl) 17.25px 40px;
-  }
-  wui-icon[data-input='mdl'] {
-    left: var(--wui-spacing-m);
-  }
-
-  input:placeholder-shown ~ ::slotted(wui-input-element),
-  input:placeholder-shown ~ ::slotted(wui-icon) {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  input:has(+ .wui-input-text-submit-button) {
+    padding-right: ${({spacing:t})=>t[12]};
   }
 
   input[type='number'] {
     -moz-appearance: textfield;
   }
 
-  ::slotted(wui-input-element),
-  ::slotted(wui-icon) {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    -webkit-appearance: none;
   }
 
-  ::slotted(wui-input-element) {
-    right: var(--wui-spacing-m);
+  /* -- Keyframes --------------------------------------------------- */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
-
-  ::slotted(wui-icon) {
-    right: 0px;
-  }
-`;var d=function(e,t,i,a){var n,r=arguments.length,o=r<3?t:null===a?a=Object.getOwnPropertyDescriptor(t,i):a;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,i,a);else for(var l=e.length-1;l>=0;l--)(n=e[l])&&(o=(r<3?n(o):r>3?n(t,i,o):n(t,i))||o);return r>3&&o&&Object.defineProperty(t,i,o),o};let u=class extends a.WF{constructor(){super(...arguments),this.inputElementRef=(0,l._)(),this.size="md",this.disabled=!1,this.placeholder="",this.type="text",this.value=""}render(){const e=`wui-padding-right-${this.inputRightPadding}`,t=`wui-size-${this.size}`,i={[t]:!0,[e]:Boolean(this.inputRightPadding)};return a.qy`${this.templateIcon()}
-      <input
-        data-testid="wui-input-text"
-        ${(0,l.K)(this.inputElementRef)}
-        class=${(0,r.H)(i)}
-        type=${this.type}
-        enterkeyhint=${(0,o.J)(this.enterKeyHint)}
-        ?disabled=${this.disabled}
-        placeholder=${this.placeholder}
-        @input=${this.dispatchInputChangeEvent.bind(this)}
-        @keydown=${this.onKeyDown}
-        .value=${this.value||""}
-        tabindex=${(0,o.J)(this.tabIdx)}
-      />
-      <slot></slot>`}templateIcon(){return this.icon?a.qy`<wui-icon
-        data-input=${this.size}
-        size=${this.size}
+`;var d=function(t,e,i,o){var r,n=arguments.length,a=n<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,i,o);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(n<3?r(a):n>3?r(e,i,a):r(e,i))||a);return n>3&&a&&Object.defineProperty(e,i,a),a};let u=class extends o.WF{constructor(){super(...arguments),this.inputElementRef=(0,a._)(),this.disabled=!1,this.loading=!1,this.placeholder="",this.type="text",this.value="",this.size="md"}render(){return o.qy` <div class="wui-input-text-container">
+        ${this.templateLeftIcon()}
+        <input
+          data-size=${this.size}
+          ${(0,a.K)(this.inputElementRef)}
+          data-testid="wui-input-text"
+          type=${this.type}
+          enterkeyhint=${(0,n.J)(this.enterKeyHint)}
+          ?disabled=${this.disabled}
+          placeholder=${this.placeholder}
+          @input=${this.dispatchInputChangeEvent.bind(this)}
+          @keydown=${this.onKeyDown}
+          .value=${this.value||""}
+        />
+        ${this.templateSubmitButton()}
+        <slot class="wui-input-text-slot"></slot>
+      </div>
+      ${this.templateError()} ${this.templateWarning()}`}templateLeftIcon(){return this.icon?o.qy`<wui-icon
+        class="wui-input-text-left-icon"
+        size="md"
+        data-size=${this.size}
         color="inherit"
         name=${this.icon}
-      ></wui-icon>`:null}dispatchInputChangeEvent(){this.dispatchEvent(new CustomEvent("inputChange",{detail:this.inputElementRef.value?.value,bubbles:!0,composed:!0}))}};u.styles=[s.W5,s.fD,p],d([(0,n.MZ)()],u.prototype,"size",void 0),d([(0,n.MZ)()],u.prototype,"icon",void 0),d([(0,n.MZ)({type:Boolean})],u.prototype,"disabled",void 0),d([(0,n.MZ)()],u.prototype,"placeholder",void 0),d([(0,n.MZ)()],u.prototype,"type",void 0),d([(0,n.MZ)()],u.prototype,"keyHint",void 0),d([(0,n.MZ)()],u.prototype,"value",void 0),d([(0,n.MZ)()],u.prototype,"inputRightPadding",void 0),d([(0,n.MZ)()],u.prototype,"tabIdx",void 0),d([(0,n.MZ)({attribute:!1})],u.prototype,"onKeyDown",void 0),u=d([(0,c.E)("wui-input-text")],u)}}]);
+      ></wui-icon>`:null}templateSubmitButton(){return this.onSubmit?o.qy`<button
+        class="wui-input-text-submit-button ${this.loading?"loading":""}"
+        @click=${this.onSubmit?.bind(this)}
+        ?disabled=${this.disabled||this.loading}
+      >
+        ${this.loading?o.qy`<wui-icon name="spinner" size="md"></wui-icon>`:o.qy`<wui-icon name="chevronRight" size="md"></wui-icon>`}
+      </button>`:null}templateError(){return this.errorText?o.qy`<wui-text variant="sm-regular" color="error">${this.errorText}</wui-text>`:null}templateWarning(){return this.warningText?o.qy`<wui-text variant="sm-regular" color="warning">${this.warningText}</wui-text>`:null}dispatchInputChangeEvent(){this.dispatchEvent(new CustomEvent("inputChange",{detail:this.inputElementRef.value?.value,bubbles:!0,composed:!0}))}};u.styles=[s.W5,s.fD,l],d([(0,r.MZ)()],u.prototype,"icon",void 0),d([(0,r.MZ)({type:Boolean})],u.prototype,"disabled",void 0),d([(0,r.MZ)({type:Boolean})],u.prototype,"loading",void 0),d([(0,r.MZ)()],u.prototype,"placeholder",void 0),d([(0,r.MZ)()],u.prototype,"type",void 0),d([(0,r.MZ)()],u.prototype,"value",void 0),d([(0,r.MZ)()],u.prototype,"errorText",void 0),d([(0,r.MZ)()],u.prototype,"warningText",void 0),d([(0,r.MZ)()],u.prototype,"onSubmit",void 0),d([(0,r.MZ)()],u.prototype,"size",void 0),d([(0,r.MZ)({attribute:!1})],u.prototype,"onKeyDown",void 0),u=d([(0,c.E)("wui-input-text")],u)},68342(t,e,i){i.d(e,{_:()=>h,K:()=>b});var o=i(36752);const{I:r}=o.ge;var n=i(7804);const a=(t,e)=>{const i=t._$AN;if(void 0===i)return!1;for(const t of i)t._$AO?.(e,!1),a(t,e);return!0},s=t=>{let e,i;do{if(void 0===(e=t._$AM))break;i=e._$AN,i.delete(t),t=e}while(0===i?.size)},c=t=>{for(let e;e=t._$AM;t=e){let i=e._$AN;if(void 0===i)e._$AN=i=new Set;else if(i.has(t))break;i.add(t),u(e)}};function l(t){void 0!==this._$AN?(s(this),this._$AM=t,c(this)):this._$AM=t}function d(t,e=!1,i=0){const o=this._$AH,r=this._$AN;if(void 0!==r&&0!==r.size)if(e)if(Array.isArray(o))for(let t=i;t<o.length;t++)a(o[t],!1),s(o[t]);else null!=o&&(a(o,!1),s(o));else a(this,t)}const u=t=>{t.type==n.OA.CHILD&&(t._$AP??=d,t._$AQ??=l)};class p extends n.WL{constructor(){super(...arguments),this._$AN=void 0}_$AT(t,e,i){super._$AT(t,e,i),c(this),this.isConnected=t._$AU}_$AO(t,e=!0){t!==this.isConnected&&(this.isConnected=t,t?this.reconnected?.():this.disconnected?.()),e&&(a(this,t),s(this))}setValue(t){if((()=>void 0===this._$Ct.strings)())this._$Ct._$AI(t,this);else{const e=[...this._$Ct._$AH];e[this._$Ci]=t,this._$Ct._$AI(e,this,0)}}disconnected(){}reconnected(){}}const h=()=>new m;class m{}const g=new WeakMap,b=(0,n.u$)(class extends p{render(t){return o.s6}update(t,[e]){const i=e!==this.G;return i&&this.rt(void 0),(i||this.lt!==this.ct)&&(this.G=e,this.ht=t.options?.host,this.rt(this.ct=t.element)),o.s6}rt(t){if(void 0!==this.G)if(this.isConnected||(t=void 0),"function"==typeof this.G){const e=this.ht??globalThis;let i=g.get(e);void 0===i&&(i=new WeakMap,g.set(e,i)),void 0!==i.get(this.G)&&this.G.call(this.ht,void 0),i.set(this.G,t),void 0!==t&&this.G.call(this.ht,t)}else this.G.value=t}get lt(){return"function"==typeof this.G?g.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})}}]);
 //# sourceMappingURL=7309.bundle.js.map

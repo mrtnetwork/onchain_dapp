@@ -47,6 +47,7 @@ async function signTransaction() {
         asyncFunc: async function name() {
             const result = await provider.request({ method: "xrpl_signTransaction", params }, network);
             const tx = await submitTx(result);
+            console.log("tx submited " + tx.result.engine_result);
             if (tx.result.engine_result !== "tesSUCCESS") {
                 throw Error(tx.result.engine_result)
             }

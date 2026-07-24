@@ -1,8 +1,8 @@
-const { ApiPromise, WsProvider } = Polkadot;
 
 
 async function createTransaction({ address, recipient, signTx }) {
-    const provider = new WsProvider('wss://westmint-rpc.dwellir.com:443'); // Or any Substrate node
+    const { ApiPromise, WsProvider } = Polkadot;
+    const provider = new WsProvider('wss://westend-asset-hub-rpc.polkadot.io'); // Or any Substrate node
     const api = await ApiPromise.create({ provider });
     const transfer = api.tx.balances.transferAllowDeath(
         recipient || '5H19GUCBcMwNhKj7PuxSbn5iMch7yBEpXMXDu1ih7xmmgi7b',

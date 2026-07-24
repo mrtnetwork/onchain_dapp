@@ -1,7 +1,7 @@
 import { getEIPWallet } from '../utils/ws.mjs'
 import * as utils from '../utils/utils.mjs';
 import { ethereum } from '../constants/constants.mjs'
-const network = ethereum.eip155WsTestnetNetwrk;
+const network = ethereum.eip155EthereumNetwrk;
 async function connect() {
   const provider = getEIPWallet();
   const params = [network];
@@ -114,7 +114,7 @@ async function listenOnAccountChanged() {
 async function listeonOnMessage() {
   const { provider } = await connect();
   provider.on("message", function (s) {
-    console.log("accounts changed: " + JSON.stringify(s));
+    console.log("new message: " + JSON.stringify(s));
 
   });
 }

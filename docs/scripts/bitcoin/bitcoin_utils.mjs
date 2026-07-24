@@ -227,11 +227,11 @@ async function createPsbt({ addresses, recipient, satPerByte = 2 }) {
     const n = bitcoin.networks.testnet
     const psbt = new bitcoin.Psbt({ network: n });
     psbt.addInputs(psbtInputs);
-    const value = 100000;
+    const value = 10000;
     const destionation = recipient || "mju61fosB2S8zYbxAuoMeufjVMnhZ2NvFv";
     const payment = bitcoin.address.toOutputScript(destionation, n);
     const out = {
-        value: value,
+        value: BigInt("100000"),
         address: destionation,
         script: payment
     }
@@ -246,7 +246,7 @@ async function createPsbt({ addresses, recipient, satPerByte = 2 }) {
     const fee = vsize * satPerByte;
     const changeAmount = totalInputValue - value - fee;
     if (change < 0) throw Error("Not enough fund.");
-    change.value = changeAmount
+    change.value = BigInt(changeAmount)
     psbt.addOutput(change);
     const signers = addresses.map(e => e.address)
     return { accounts: signers, psbt: psbt.toBase64() }

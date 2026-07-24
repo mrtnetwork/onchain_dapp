@@ -28,7 +28,7 @@ async function signMessage() {
 
 async function signTransaction() {
     const { accounts, provider } = await connect();
-    const recipient = prompt("Please enter a valid ton destionation address: ", "Uf9yQSjbA9yVLb6sNqtkcyXrZpSxWXlN7D-dV0Rovm2q62YI");
+    const recipient = prompt("Please enter a valid ton destionation address: ", "0QAti31XYPuXH7eFzWTc72MjjOEsiJkbPFgiHP0MJWwsfkUo");
     const params = await createTransfer(accounts[0], recipient);
     await utils.runMethod({
         method: "ton_signTransaction",
@@ -40,7 +40,7 @@ async function signTransaction() {
 }
 async function signAndSendTransaction() {
     const { accounts, provider } = await connect();
-    const recipient = prompt("Please enter a valid ton destionation address: ", "Uf-BQxz-Z5Lqfr02hNbTHw45ZJaM_pKf0R_OsTF_H9mEvHZk");
+    const recipient = prompt("Please enter a valid ton destionation address: ", "0QAti31XYPuXH7eFzWTc72MjjOEsiJkbPFgiHP0MJWwsfkUo");
     const params = await createTransfer(accounts[0], recipient);
     await utils.runMethod({
         method: "ton_sendTransaction",

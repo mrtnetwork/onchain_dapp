@@ -12,6 +12,7 @@ async function runMethod({ method, asyncFunc, showAlert = true }) {
         const data = await asyncFunc();
         const message = method + ": " + JSON.stringify(data);
         if (showAlert) alert(message)
+        console.log(JSON.stringify(message))
         return data;
     } catch (error) {
         console.log("error here: " + error);

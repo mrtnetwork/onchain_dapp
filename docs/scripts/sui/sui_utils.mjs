@@ -4,6 +4,7 @@ async function createTransfer(address, recipient) {
     transaction.transferObjects([coin], recipient || '0x4637f89fdf75bf020b2f00a5dedeb6a405728c6062d44ed9c816f5683dd0f72a');
     transaction.setSender(address)
     const txData = await transaction.toJSON();
+    console.log("txdata: " + txData)
     return Buffer.from(txData).toString("base64");
 }
 export { createTransfer }

@@ -1,7 +1,8 @@
-const { SigningStargateClient } = Cosmos;
+
 
 
 async function createTransaction(signer, recipient) {
+    const { SigningStargateClient } = Cosmos;
     const rpcUrl = "https://rpc.provider-sentry-02.ics-testnet.polypore.xyz"
     const signingClient = await SigningStargateClient.connectWithSigner(
         rpcUrl,

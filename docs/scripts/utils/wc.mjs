@@ -3,6 +3,7 @@ let provider;
 let appkit;
 
 async function startAppKit(provider, caip2, chain) {
+    console.log("calle?");
     appkit = createAppKit({
         projectId: "eca409135e9616e51b4e4de241abe322",
         manualWCControl: true,
@@ -37,10 +38,19 @@ async function startAppKit(provider, caip2, chain) {
             "cip34:1-764824073": "https://google.com",
         },
     }
-    console.log("params: ${params"+JSON.stringify(params))
-    const client = await provider.connect({
-        namespaces: params
-    });
+    console.log("params: ${params" + JSON.stringify(params))
+    try {
+        const client = await provider.connect({
+            namespaces: params
+        });
+    } catch (e) {
+        if (e.message != undefined && e.message === "User Rejected.") {
+            console.log("connect again");
+            const client = await provider.connect({
+                namespaces: params
+            });
+        }
+    }
 }
 async function initWalletConnectInternal(completer) {
     if (!provider) {
@@ -126,6 +136,7 @@ function getApprovedAccounts({ session, caip10 }) {
     }
 
     const accounts = session.namespaces[namespace].accounts || [];
+    console.log("approved accounts " + accounts)
     const filter = accounts.filter(item => item.startsWith(caip10));
     const cleaned = filter.map(str => str.replace(`${caip10}:`, ""));
     return cleaned;

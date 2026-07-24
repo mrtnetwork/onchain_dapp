@@ -102,7 +102,7 @@ const bitcoinTestnet4Network = "bip122:00000000da84f2bafbbc53dee25a72ae"
 const bitcoinWsTestnet4Network = "bitcoin:testnet4"
 // const bchTestnet = "bitcoincash:testnet"
 const bchCaip2Testnet = "bch:bchtest"
-const btc = { bitcoinCaip2, bitcoinTestnet4Network, bitcoinWsTestnet4Network,  bchCaip2Testnet, bchCaip2 }
+const btc = { bitcoinCaip2, bitcoinTestnet4Network, bitcoinWsTestnet4Network, bchCaip2Testnet, bchCaip2 }
 
 
 
@@ -130,7 +130,12 @@ const monero = { moneroCaip2, moneroWsTestnetNetwork }
 
 
 
+const zcashCaip2 = "zcash";
+const zcashWsRegtestNetwork = "zcash:regtest"
+const zcash = { zcashCaip2, zcashWsRegtestNetwork }
+
+
 const cardanoCaip2 = "cip34";
 const cardanoWsPreprodNetwork = "cip34:0-1"
 const cardano = { cardanoCaip2, cardanoWsPreprodNetwork }
-export { ethereum, tron, aptos, solana, sui, stellar, ton, btc, cosmos, polkadot, xrp, monero, cardano };
+export { ethereum, tron, aptos, solana, sui, stellar, ton, btc, cosmos, polkadot, xrp, monero, cardano, zcash };

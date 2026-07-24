@@ -2,7 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const isDev = process.env.NODE_ENV === 'development';
-console.log("id dev: "+isDev);
+console.log("id dev: " + isDev);
 /// 
 module.exports = {
     entry: './src/index.js', // Your main JavaScript file
@@ -13,7 +13,7 @@ module.exports = {
         chunkFilename: 'js/chunks/[name].bundle.js',
     },
     optimization: {
-        minimize:isDev?false: true // ⛔ disables minification
+        minimize: isDev ? false : true // ⛔ disables minification
     },
     experiments: {
         asyncWebAssembly: true, // Enable support for .wasm files
@@ -38,7 +38,7 @@ module.exports = {
             "crypto": false
             // Add other Node.js core modules here as needed
         },
-        extensions: [".js", ".jsx", ".css",".wasm"], // Ensure Webpack recognizes CSS files
+        extensions: [".js", ".jsx", ".css", ".wasm"], // Ensure Webpack recognizes CSS files
 
     },
     plugins: [
@@ -47,7 +47,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-          }),
+        }),
     ],
     mode: 'development',
     devtool: 'source-map'

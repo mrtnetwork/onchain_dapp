@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zcash Wallet Standard</title>
+    <script src="../../bundle.js"></script>
+    <script src="../../scripts/zcash/ws_zcash.mjs" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="../../statics/favicon.ico"/>
+</head>
+
+<body>
+    <button onclick="onChainDapp.zcash.connect()">Connect</button><br><br>
+    <button onclick="onChainDapp.zcash.signMessage()">Sign Message</button><br><br>
+    <button onclick="onChainDapp.zcash.signAndSendTransaction()">Sign And Send Transaction</button><br><br>
+    <button onclick="onChainDapp.zcash.requestAccounts()">Request Accounts</button><br><br>
+    <button onclick="onChainDapp.zcash.listenOnWalletChanges()">Listen on wallet changed</button><br><br>
+    <button onclick="onChainDapp.zcash.listenOnNetworkChanges()">Listen on network changed</button><br><br>
+    <button onclick="onChainDapp.zcash.disconnect()">Disconnect</button><br><br>
+    <!--  -->
+</body>
+
+</html>

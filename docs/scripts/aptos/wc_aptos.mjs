@@ -54,7 +54,7 @@ async function requestAccounts() {
 async function signTransfer() {
     const { accounts, provider } = await connect();
     // const { account, wallet } = await connect()
-    const config = new window.aptosSDK.AptosConfig({ network: window.aptosSDK.Network.TESTNET });
+    const config = new window.aptosSDK.AptosConfig({ network: window.aptosSDK.Network.TESTNET, transactionGenerationConfig: { defaultMaxGasAmount: 2000 } });
     const aptos = new window.aptosSDK.Aptos(config);
     const recipient = prompt("Please enter a valid aptos destionation address: ", "0x334f1cdf8818838ce6e59da66a05233ae558bdb42e279af5eaee77a5b9060630");
     const destination = window.aptosSDK.AccountAddress.fromString(recipient || "0x334f1cdf8818838ce6e59da66a05233ae558bdb42e279af5eaee77a5b9060630");
